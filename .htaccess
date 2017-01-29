@@ -1,0 +1,10 @@
+RewriteEngine on
+
+#Make sure directory doesn't already exist:
+RewriteCond %{REQUEST_FILENAME} !-d
+#Make sure file doesn't already exist:
+RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_URI} !^/index.php
+
+#Remap URL to index.php with requested URL as parameter
+RewriteRule ^(.*)$ index.php?page=$1 [NC,L,QSA]

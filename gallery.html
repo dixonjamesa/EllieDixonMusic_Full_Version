@@ -1,0 +1,37 @@
+<?php
+	$totalimages=12;
+?>
+	<div class="container-fluid">
+			<div class="row gridspace">
+				<div class="col-sm-6 col-md-4 gridspace">
+					<?php
+					for($i=0;$i<$totalimages/3;$i++)
+					{
+              if($i==0){
+                  // we do this for google search reasons - let's get her picture out there
+                  echo '<img class="tabimage" src="images/ellie-dixon.jpg" alt="ellie dixon">';
+              }
+              else{
+                  echo '<img class="tabimage" src="images/gig'.($i+1).'.jpg">';
+              }
+				  }
+				  ?>
+				</div>
+				<div class="col-sm-6 col-md-4 gridspace">
+					<?php
+					for($i=0;$i<$totalimages/3;$i++)
+					{
+		  				echo '<img class="tabimage" src="images/gig'.($i+1+$totalimages/3).'.jpg">';
+				  	}
+				  ?>
+				</div>
+				<div class="col-sm-6 col-md-4 gridspace">
+					<?php
+					for($i=0;$i<$totalimages/3;$i++)
+					{
+		  				echo '<img class="tabimage" src="images/gig'.($i+1+$totalimages*2/3).'.jpg">';
+				  	}
+				  ?>
+				</div>
+			</div>
+</div>
