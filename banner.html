@@ -48,22 +48,25 @@
 		<div class="container-fluid" style="position: relative; background-color:#aba2c3;">
 			<ul class="nav nav-tabs banner">
 							<?php
-							function menuitem($name,$page,$icon)
+							function menuitem($title,$name,$page,$icon)
 							{
 								echo '<li role="presentation" ';
-								if(strtolower($page)==strtolower($name)) echo ' class="active"';
+								if(strtolower($page)==strtolower($title)) echo ' class="active"';
 								echo '><a';
 								echo ' href="'.$name.'" onClick="ga(\'send\',\'event\',\'Menu\',\'SelectBar\',\''.$name.'\');">';
                 echo '<span class="icon"><i class="fa fa-'.$icon.'" aria-hidden="true"></i></span>&nbsp;';
-                echo '<span class="hidden-xs">'.$name.'</span></a></li>';
+                echo '<span class="hidden-xs">'.$title.'</span></a></li>';
 							}
-							menuitem("Home",$page,"home");
-							menuitem("News",$page,"newspaper-o");
-							menuitem("Videos",$page,"film");
-							menuitem("EP",$page,"music");
-							menuitem("Gallery",$page,"image");
-                            menuitem("Press",$page,"microphone");
-                            menuitem("Gigs",$page,"thumbs-o-up");
+							menuitem("Home",$homeURL."/Home",$page,"home");
+							menuitem("News",$homeURL."/News",$page,"newspaper-o");
+							menuitem("Videos",$homeURL."/Videos",$page,"film");
+							menuitem("EP",$homeURL."/EP",$page,"music");
+							menuitem("Gallery",$homeURL."/Gallery",$page,"image");
+              menuitem("Press",$homeURL."/Press",$page,"microphone");
+              menuitem("Gigs",$homeURL."/Gigs",$page,"thumbs-o-up");
+							if( isset($_SESSION['userAuth']) && $_SESSION['userAuth'] == "Full" ){
+									menuitem("Site",$homeURL."/Site",$page,"wrench");
+							}
 							?>
 				</ul>
 			</div>

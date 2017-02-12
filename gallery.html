@@ -9,10 +9,10 @@
 					{
               if($i==0){
                   // we do this for google search reasons - let's get her picture out there
-                  echo '<img class="tabimage" src="images/ellie-dixon.jpg" alt="ellie dixon">';
+                  echo '<img class="tabimage" src="'.$homeURL.'/images/ellie-dixon.jpg" alt="ellie dixon">';
               }
               else{
-                  echo '<img class="tabimage" src="images/gig'.($i+1).'.jpg">';
+                  echo '<img class="tabimage" src="'.$homeURL.'/images/gig'.($i+1).'.jpg">';
               }
 				  }
 				  ?>
@@ -21,7 +21,7 @@
 					<?php
 					for($i=0;$i<$totalimages/3;$i++)
 					{
-		  				echo '<img class="tabimage" src="images/gig'.($i+1+$totalimages/3).'.jpg">';
+		  				echo '<img class="tabimage" src="'.$homeURL.'/images/gig'.($i+1+$totalimages/3).'.jpg">';
 				  	}
 				  ?>
 				</div>
@@ -29,7 +29,7 @@
 					<?php
 					for($i=0;$i<$totalimages/3;$i++)
 					{
-		  				echo '<img class="tabimage" src="images/gig'.($i+1+$totalimages*2/3).'.jpg">';
+		  				echo '<img class="tabimage" src="'.$homeURL.'/images/gig'.($i+1+$totalimages*2/3).'.jpg">';
 				  	}
 				  ?>
 				</div>

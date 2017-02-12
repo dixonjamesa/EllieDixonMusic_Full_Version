@@ -1,0 +1,49 @@
+<h1>Visitors</h1>
+<div class="container">
+<table class="table table-hover table-condensed">
+  <thead>
+  <tr>
+    <th>IP</th>
+    <th>City</th>
+    <th>Region</th>
+    <th>Country</th>
+    <th>Host</th>
+    <th>Date</th>
+    <th>Hits</th>
+  </tr>
+</thead>
+<tbody>
+<?php
+// Get a list of all entries in the visitors table:
+  $res=$msdb_connection->query("SELECT id, ip, city, region, country, host, date FROM visitors ORDER BY id DESC");
+  $entrycount = $res->num_rows;
+  for($i=0;$i<$entrycount;$i++)
+  {
+    $row=$res->fetch_array();
+?>
+  <tr class="clickable-row" href="<?php echo $homeURL.'/visitor?ip='.$row['ip'];?>">
+
+    <td><a href="<?php echo $homeURL.'/site/visitor?ip='.$row['ip'];?>"><?php echo $row['ip'];?></a></td>
+    <td><?php echo $row['city'];?></td>
+    <td><?php echo $row['region'];?></td>
+    <td><?php echo $row['country'];?></td>
+    <td><?php echo $row['host'];?></td>
+    <td><?php echo $row['date'];?></td>
+    <td><?php
+      // go through the pagehits table seeing how many visits made from this IP
+      $res2=$msdb_connection->query("SELECT ip,url FROM pagehits WHERE ip='".$row['ip']."'");
+      echo $res2->num_rows;
+    ?></td>
+  </tr>
+<?php } ?>
+</tbody>
+</table>
+</div>
+
+<script>
+$(function(){
+  $(".clickable-row").click(function(){
+    window.location = $(this).data("href");
+  });
+});
+</script>
