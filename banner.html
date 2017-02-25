@@ -8,7 +8,10 @@
         	<span class="icon-bar"></span>
         	<span class="icon-bar"></span>
       	</button>
-      	<a class="navbar-brand" href="http://elliedixonmusic.com">Ellie Dixon</a>
+				<a class="navbar-brand" style="padding:6;" href="http://elliedixonmusic.com">
+				<!--img class="navbar-left" style="padding:0px;width:42px;height:42px;" src="<?php echo $homeURL;?>/images/ellie-dixon-thumb.jpg" alt="Ellie Dixon singer songwriter" title="ellie dixon"-->
+				 <img class="navbar-left" style="height:40px;padding-left:6px;" src="<?php echo $homeURL;?>/images/ellie-dixon-logo.png">
+			 </a>
     	</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="ed-navbar-collapse">
@@ -57,15 +60,15 @@
                 echo '<span class="icon"><i class="fa fa-'.$icon.'" aria-hidden="true"></i></span>&nbsp;';
                 echo '<span class="hidden-xs">'.$title.'</span></a></li>';
 							}
-							menuitem("Home",$homeURL."/Home",$page,"home");
-							menuitem("News",$homeURL."/News",$page,"newspaper-o");
-							menuitem("Videos",$homeURL."/Videos",$page,"film");
-							menuitem("EP",$homeURL."/EP",$page,"music");
-							menuitem("Gallery",$homeURL."/Gallery",$page,"image");
-              menuitem("Press",$homeURL."/Press",$page,"microphone");
-              menuitem("Gigs",$homeURL."/Gigs",$page,"thumbs-o-up");
+							menuitem("Home",$homeURL."/home",$page,"home");
+							menuitem("News",$homeURL."/news",$page,"newspaper-o");
+							menuitem("Videos",$homeURL."/videos",$page,"film");
+							menuitem("EP",$homeURL."/ep",$page,"music");
+							menuitem("Gallery",$homeURL."/gallery",$page,"image");
+              menuitem("Press",$homeURL."/press",$page,"microphone");
+              menuitem("Gigs",$homeURL."/gigs",$page,"thumbs-o-up");
 							if( isset($_SESSION['userAuth']) && $_SESSION['userAuth'] == "Full" ){
-									menuitem("Site",$homeURL."/Site",$page,"wrench");
+									menuitem("Site",$homeURL."/site",$page,"wrench");
 							}
 							?>
 				</ul>

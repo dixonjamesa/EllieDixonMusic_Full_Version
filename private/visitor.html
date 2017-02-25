@@ -1,21 +1,12 @@
-<div class="container">
-  <p>You are logged in as
-    <?php
-    if( isset($_SESSION['user']) ) {
-      echo $_SESSION['userFirst']." ".$_SESSION['userLast']." (Auth level ".$_SESSION['userAuth'].")";
-    }
-    else{
-      echo " Anonymous";
-    }
+<?php
+if( isset($_GET['ip'])){
+  $vip = $_GET['ip'];
+}else{
+  $vip = "";
+}
 
-    if( isset($_GET['ip'])){
-      $vip = $_GET['ip'];
-    }else{
-      $vip = "";
-    }
-
-  ?></p>
-  <h1>Visitor Information</h1>
+?>
+<h1>Visitor Information</h1>
 <div class="container">
   <?php
   // Get details from the visitors table:
@@ -53,7 +44,7 @@
 </tbody>
 </table>
 <?php
-  }// exactly one visitor found, a expected
+  }// exactly one visitor found, as expected
   else{
     ?>
     <p>Could not find precise match for IP '<?php echo $vip; ?>'</p>
@@ -71,7 +62,7 @@
 <tbody>
   <?php
   // go through the pagehits table for all the visits made from this IP
-  $res2=$msdb_connection->query("SELECT ip,url,date FROM pagehits WHERE ip='".$row['ip']."'");
+  $res2=$msdb_connection->query("SELECT ip,url,date FROM pagehits WHERE ip='".$row['ip']."' ORDER BY date DESC LIMIT 50;");
   for($i=0;$i<$res2->num_rows;$i++)
   {
     $row=$res2->fetch_array();
@@ -83,5 +74,4 @@
   <?php } ?>
 </tbody>
 </table>
-</div>
 </div>

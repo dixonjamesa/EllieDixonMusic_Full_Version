@@ -3,7 +3,7 @@
 
 function login_proceed($msdb_conn, $page)
 {
-  global $loginrequired, $loginfree, $sessiontimeout; // from configed.php
+  global $sessionTimeout, $loginrequired, $loginfree, $sessiontimeout; // from configed.php
   $requirelogin=false;
   // look to see if the page is excepted using the loginfree array:
   $arrlength = count($loginrequired);
@@ -21,7 +21,7 @@ function login_proceed($msdb_conn, $page)
   if ( isset($_SESSION['user']) )
   {
     //echo 'You are logged in as '.$_SESSION['user'];
-    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 60*60*24))
+    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $sessionTimeout))
     {
       // last request was more than 24 hours ago
       //echo 'Session timed out';

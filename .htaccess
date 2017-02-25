@@ -1,4 +1,8 @@
 RewriteEngine on
+#preferred domain removes the www. :
+#RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 #Make sure directory doesn't already exist:
 #RewriteCond %{REQUEST_FILENAME} !-d
@@ -7,9 +11,18 @@ RewriteEngine on
 #RewriteCond %{REQUEST_URI} !^/index.php
 
 #Remap URL to index.php with requested URL as parameter
+RewriteRule (.*sitemap\.xml) $1 [L]
+RewriteRule (.*robots\.txt) $1 [L]
 RewriteRule (.*\.css) $1 [L]
+RewriteRule (.*\.map) $1 [L]
+RewriteRule (.*\.woff) $1 [L]
+RewriteRule (.*\.woff2) $1 [L]
+RewriteRule (.*\.ttf) $1 [L]
+RewriteRule (.*\.svg) $1 [L]
+RewriteRule (.*\.eot) $1 [L]
 RewriteRule (.*\.jpg) $1 [L]
 RewriteRule (.*\.png) $1 [L]
 RewriteRule (.*\.js) $1 [L]
+RewriteRule (.*\.m4a) $1 [L]
 RewriteRule ^(.*)/(.*)$ index.php?page=$1&data=$2 [NC,L,QSA]
 RewriteRule ^(.*)$ index.php?page=$1 [NC,L,QSA]

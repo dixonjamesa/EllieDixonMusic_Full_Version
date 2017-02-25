@@ -4,7 +4,7 @@
 
 $loginfree = array("Home","News","Videos","EP","Gallery","Press","Gigs","Register");
 $loginrequired = array("Site");
-
+$sessionTimeout = 60*60*24;
 
 if( $ipaddr == '::1' ) {
   $servername="localhost:8889";
@@ -74,7 +74,8 @@ function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
   region varchar(30),
   country varchar(30),
   host varchar(30),
-  date TIMESTAMP
+  date TIMESTAMP,
+  robot tinyint(1)
   )";
 
   if ($msdb_conn->query($sql) === TRUE) {

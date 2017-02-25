@@ -1,5 +1,29 @@
 <h1>Visitors</h1>
 <div class="container">
+  <?php
+  $showAll=0;
+  // handle any submit queries:
+    if(isset($_POST['action']))
+    {
+      $rvalue=0;
+      if( $_POST['action']=="Yes") $rvalue = 1;
+      //echo "<p>".$_POST['action'].": ".$_POST['id']."</p>";
+      $query = "UPDATE visitors SET robot='".$rvalue."' WHERE id='".$_POST['id']."'";
+      $res = $msdb_connection->query($query);
+
+    }
+    if(isset($_POST['visible']))
+    {
+      if($_POST['visible']=="Show All"){
+        $showAll=1;
+      }
+    }
+  ?>
+  <form method="post" action="">
+   <input class="btn btn-sm <?php if($showAll){?> btn-ellied <?}?>" type="submit" name="visible" value="Show All"/>
+   <input class="btn btn-sm <?php if(!$showAll){?> btn-ellied<?}?>" type="submit" name="visible" value="Hide Robots"/>
+ </form>
+
 <table class="table table-hover table-condensed">
   <thead>
   <tr>
@@ -10,20 +34,26 @@
     <th>Host</th>
     <th>Date</th>
     <th>Hits</th>
+    <th>Robot</th>
   </tr>
 </thead>
 <tbody>
 <?php
 // Get a list of all entries in the visitors table:
-  $res=$msdb_connection->query("SELECT id, ip, city, region, country, host, date FROM visitors ORDER BY id DESC");
+  $query = "SELECT id, ip, city, region, country, host, date, robot FROM visitors ";
+  if( $showAll == 0 ){
+   $query = $query."WHERE robot!=1 ";
+ }
+  $query = $query."ORDER BY id DESC";
+  $res=$msdb_connection->query($query);
   $entrycount = $res->num_rows;
   for($i=0;$i<$entrycount;$i++)
   {
     $row=$res->fetch_array();
 ?>
-  <tr class="clickable-row" href="<?php echo $homeURL.'/visitor?ip='.$row['ip'];?>">
+  <tr class="clickable-row" style="cursor: pointer;" data-url="<?php echo $homeURL.'/Site/visitor?ip='.$row['ip'];?>">
 
-    <td><a href="<?php echo $homeURL.'/site/visitor?ip='.$row['ip'];?>"><?php echo $row['ip'];?></a></td>
+    <td><?php echo $row['ip'];?></td>
     <td><?php echo $row['city'];?></td>
     <td><?php echo $row['region'];?></td>
     <td><?php echo $row['country'];?></td>
@@ -34,6 +64,13 @@
       $res2=$msdb_connection->query("SELECT ip,url FROM pagehits WHERE ip='".$row['ip']."'");
       echo $res2->num_rows;
     ?></td>
+    <td>
+      <form method="post" action="">
+       <input class="btn <?php if($row['robot']){echo'btn-ellied';}?> btn-sm" type="submit" name="action" value="Yes"/>
+       <input class="btn <?php if(!$row['robot']){echo'btn-ellied';}?> btn-sm" type="submit" name="action" value="No"/>
+       <input type="hidden" name="id" value="<?php echo $row['id']; ?>"/>
+     </form>
+    </td>
   </tr>
 <?php } ?>
 </tbody>
@@ -43,7 +80,8 @@
 <script>
 $(function(){
   $(".clickable-row").click(function(){
-    window.location = $(this).data("href");
+    //console.log($(this).data('url'));
+    window.location = $(this).data('url');
   });
 });
 </script>

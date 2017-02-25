@@ -62,7 +62,7 @@ function write_logfile($what)
 
 /* ------------- get data into variables ----------- */
 $date = new DateTime();
-$date = $date->format("y:m:d h:i:s");
+$date = $date->format("y:m:d H:i:s");
 $page = strtolower($rpage);
 
 if($page=='')
@@ -71,7 +71,7 @@ if($page=='')
 	$page='home';
 }
 
-visitor_logvisit($ipaddr, $date, $page);
+visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
 
 include 'banner.html';
 
