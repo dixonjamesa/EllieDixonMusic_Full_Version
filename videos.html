@@ -14,13 +14,23 @@ function add_video($link, $name, $author, $tag)
 	$videotags[] = $tag;
 }
 
+/* original */
+add_video("qaatSwJVnvc", "Take Me Home", "Ellie Dixon", "Home");
 add_video("DnyZZgCbTxs", "False Fires", "Ellie Dixon", "Fires");
 add_video("P5CIetPkhpk", "Heading East", "Ellie Dixon", "HEast");
 add_video("q2NvBgiGxw8", "Replay", "Ellie Dixon", "Replay");
+/* DIY */
 add_video("KxO3K8yskls", "Lush Life", "Zara Larsson", "Lush");
 add_video("ENbVo-HTsgY", "Cheap Thrills", "Sia", "Thrills");
+/* Collabs */
+add_video("yYW21-borlw", "Uptown Funk", "Bruno Mars", "UptownFunk");
+add_video("ekoBO-TuBPw", "All Star", "Smashmouth", "AllStar");
 add_video("JCGcEBc8-Ss", "Nothing Arrived", "Villagers", "Nothing");
 add_video("ssdyPMlcWVg", "Breezeblocks", "Alt-J", "Breeze");
+/* Covers */
+add_video("35rWWk11pHA", "Redbone", "Childish Gambino", "Redbone");
+add_video("JLQo4YXZ6dg", "Mercy", "Shawn Mendes", "Mercy");
+add_video("7qt67SLrsAM", "Hometown Glory", "Adele", "Hometown");
 add_video("lpuCh8AXc28", "Dancing on my Own", "Robyn", "Dancing");
 add_video("mxsM-pW8XNI", "Elastic Heart", "Sia", "Elastic");
 add_video("lharlGvaJNM", "Everybody Wants to Rule the World", "Tears for Fears", "RuleWorld");
@@ -38,11 +48,12 @@ $videonumber = -1;
 				Originals
 			</h1>
 				<div class="row gridspace">
-
 				  <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
 				  <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
-          <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
-
+				  <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
+				</div>
+				<div class="row gridspace">
+				  <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
 				</div>
 				<h1 class="title">
 					DIY Covers
@@ -60,6 +71,7 @@ $videonumber = -1;
 
 					<div class="row gridspace">
 
+					  <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
 					  <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
 					  <div class="col-sm-4 gridspace"><?php $videonumber++; include 'video.html';?></div>
 

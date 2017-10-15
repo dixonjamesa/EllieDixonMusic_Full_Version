@@ -16,7 +16,12 @@ body{
 }
 
 a{
-  color:#9b92b3;
+  color:#202020;
+  /*background-color:#cbddac;*/
+  /*background-image:url('../images/swoosh.jpg');
+  background-size:100% auto;
+  background-position: center center;
+  background-repeat:no-repeat;*/
 }
 a:hover{
   color:#6b6283;
@@ -65,7 +70,11 @@ a:hover{
   padding: 15px 8px;
 }
 
-/* middle banner menu bar */
+/* middle banner menu bar: */
+.banner {
+	/*background-color:#aba2c3;*/
+	background-color:#616a52;
+}
 .banner > li > a{
   -webkit-border: 0 !important;
   -moz-border: 0 !important;
@@ -73,17 +82,23 @@ a:hover{
   color: rgb(246,246,249);
   padding: 8px 10px 4px 10px;
   }
+  
+/* Hover over unselected tab: */
 .banner > li > a:hover {
-    background-color:#9b92b3;
+	/*background-color:#9b92b3;*/
+    background-color:#373b2e;
     padding: 8px 10px 2px 10px;
 }
+
+/* active (selected) tab: */
 .banner > li.active > a {
-  color:#9b92b3;
+  /*color:#9b92b3;*/
+  color:#616a52;
   padding: 8px 10px 4px 10px;
 }
 .banner > li.active > a:hover {
-  color:#8b82a3;
   padding: 8px 10px 4px 10px;
+  color:#373b2e;
 }
 
 /* middle site menu bar */

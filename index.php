@@ -16,18 +16,6 @@
 
   $msdb_connection = init_dataconnection($servername, $sqldb, $sqluser, $sqlpass);
 
-/* First output the head tags and common head html */
-
-if( isset($_GET['page'])){
-  $rpage = $_GET['page'];
-}else{
-  $rpage="";
-}
-include 'head.html';
-
- /* Now we'll do the body tag and some common stuff... */
- include 'commonbody.html';
-
 /* Get the IP address of the client PC that is connecting */
 function get_ip_address() {
     $ip_keys = array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR');
@@ -57,6 +45,17 @@ function validate_ip($ip)
     return true;
 }
 
+  
+if( isset($_GET['page'])){
+  $rpage = $_GET['page'];
+}else{
+  $rpage="";
+}
+/* First output the head tags and common head html */
+include 'head.html';
+ /* Now we'll do the body tag and some common stuff... */
+ include 'commonbody.html';
+
 function write_logfile($what)
 {
 	$logfile = file_put_contents('log.txt', $what.PHP_EOL, FILE_APPEND | LOCK_EX );
@@ -76,9 +75,6 @@ if($page=='')
 //visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
 
 include 'banner.html';
-
-echo $page;
-echo basename($_SERVER['PHP_SELF']);
 
 //phpinfo();
 /* see if we support mod_rewrite:
