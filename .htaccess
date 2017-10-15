@@ -10,7 +10,7 @@ RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_URI} !^/index.php
 
-#Remap URL to index.php with requested URL as parameter
+# Any of the following files are fine, so terminate processing ([L]) so they don't end up going through index.php
 RewriteRule (.*sitemap\.xml) $1 [L]
 RewriteRule (.*robots\.txt) $1 [L]
 RewriteRule (.*\.css) $1 [L]
@@ -24,5 +24,10 @@ RewriteRule (.*\.jpg) $1 [L]
 RewriteRule (.*\.png) $1 [L]
 RewriteRule (.*\.js) $1 [L]
 RewriteRule (.*\.m4a) $1 [L]
+
+#Remp staging files:
+RewriteRule ^staging/(.*)$ staging/index.php?page=$1 [NC,L,QSA]
+
+#Remap URL to index.php with requested URL as parameter
 RewriteRule ^(.*)/(.*)$ index.php?page=$1&data=$2 [NC,L,QSA]
 RewriteRule ^(.*)$ index.php?page=$1 [NC,L,QSA]

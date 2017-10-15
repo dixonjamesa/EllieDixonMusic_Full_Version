@@ -16,7 +16,7 @@ if( $ipaddr == '::1' ) {
   $sqluser="root";
   $sqlpass="";
   $sqldb="eddb1";
-  $homeURL="/EllieDixonMusic_Full_Version";
+  $homeURL="/EllieDixonMusic";
 }
 else {
   $servername="109.68.38.30";

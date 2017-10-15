@@ -8,6 +8,8 @@
 
   // load configuration info:
   require_once 'configed.php'; // configuration settings
+  if(file_exists('staging.php'))
+	require_once 'staging.php'; // additional configuration settings. If this file is present, then the root becomes the staging directory
   //require_once 'dataconnector.php';
   require_once 'visitor.php';
   require_once 'login.php';
@@ -26,7 +28,7 @@ include 'head.html';
  /* Now we'll do the body tag and some common stuff... */
  include 'commonbody.html';
 
-/* Now some stuff to write out info to the log file, and the visitor file */
+/* Get the IP address of the client PC that is connecting */
 function get_ip_address() {
     $ip_keys = array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR');
     foreach ($ip_keys as $key) {
@@ -74,6 +76,9 @@ if($page=='')
 //visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
 
 include 'banner.html';
+
+echo $page;
+echo basename($_SERVER['PHP_SELF']);
 
 //phpinfo();
 /* see if we support mod_rewrite:
