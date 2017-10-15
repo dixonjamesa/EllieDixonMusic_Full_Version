@@ -7,5 +7,5 @@ if( $ipaddr == '::1' ) {
   $homeURL="/EllieDixonMusic/staging";
 }
 else {
-  $homeURL="staging";
+  $homeURL="/staging";
 }
