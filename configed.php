@@ -7,9 +7,14 @@ $loginrequired = array("Site");
 $sessionTimeout = 60*60*24;
 
 if( $ipaddr == '::1' ) {
-  $servername="localhost:8889";
+// macbook local hosting
+//  $servername="localhost:8889";
+//  $sqluser="root";
+//  $sqlpass="root";
+// PC local hosting with WAMP
+  $servername="localhost:3306";
   $sqluser="root";
-  $sqlpass="root";
+  $sqlpass="";
   $sqldb="eddb1";
   $homeURL="/EllieDixonMusic_Full_Version";
 }

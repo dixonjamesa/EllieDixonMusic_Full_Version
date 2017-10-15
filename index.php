@@ -71,7 +71,7 @@ if($page=='')
 	$page='home';
 }
 
-visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
+//visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
 
 include 'banner.html';
 
