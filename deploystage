@@ -1,0 +1,10 @@
+#!/bin/sh
+
+SOURCE="$PWD"
+DEST="/var/www/html/staging"
+rm -rf $DEST
+mkdir $DEST
+cp $SOURCE/* -r $DEST
+rm $DEST/deploy*.*
+rm -rf $DEST/sourcefiles
+
