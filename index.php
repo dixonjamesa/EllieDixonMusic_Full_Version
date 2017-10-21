@@ -10,7 +10,6 @@
   require_once 'configed.php'; // configuration settings
   if(file_exists('staging.php'))
 	require_once 'staging.php'; // additional configuration settings. If this file is present, then the root becomes the staging directory
-  //require_once 'dataconnector.php';
   require_once 'visitor.php';
   require_once 'login.php';
 

@@ -53,6 +53,7 @@
 							<?php
 							function menuitem($title,$name,$page,$icon)
 							{
+								// build a menu bar link, including a font-awesome icon
 								echo '<li role="presentation" ';
 								if(strtolower($page)==strtolower($title)) echo ' class="active"';
 								echo '><a';
@@ -61,6 +62,7 @@
                 echo '<span class="hidden-xs">'.$title.'</span></a></li>';
 							}
 							menuitem("Home",$homeURL."/home",$page,"home");
+							menuitem("About",$homeURL."/about",$page,"info-circle");
 							menuitem("News",$homeURL."/news",$page,"newspaper-o");
 							menuitem("Videos",$homeURL."/videos",$page,"film");
 							menuitem("EP",$homeURL."/ep",$page,"music");
