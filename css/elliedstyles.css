@@ -1,8 +1,9 @@
-/* to change colours, search for :
- * 'themecolour 1' debcbf light accent colour 
- * 'themecolour 2' c17077 darker accent colour
- * 'themecolour 3' 9b1421 darkest accent used for links
- * 'themecolour 4' b8525c
+/* to change colours, search for 'themecolour'
+ * #9b1421 darkest accent used for links
+ * #b8525c 
+ * #c17077 darker accent colour
+ * #debcbf light accent colour 
+ * #efd9db lightest used for higlhights and body l/r borders
  */
  
 html {
@@ -89,22 +90,34 @@ p > a:hover{
 }
 
 /* normal header tab: */
-.navbar-default .navbar-nav  > li > a,
+.navbar-default .navbar-nav  > li > a
+{
+/* themecolour 1, 2: */
+  color:#c17077;
+  background-color:#debcbf;
+}
+
+/* normal header tab hover */
 .navbar-default .navbar-nav  > li > a:hover,
 .navbar-default .navbar-nav  > li > a:focus
 {
 /* themecolour 1, 2: */
   color:#ffffff;
-  background-color:#debcbf;
+  background-color:#c17077;
 }
 
 /* active (selected) header tab: */
-.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a
+{
+/* themecolour 1, 2: */
+  color:#c17077;
+  background-color:#efd9db;
+}
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus
 {
 /* themecolour 1, 2: */
-  color:#debcbf;
+  color:#ffffff;
   background-color:#c17077;
 }
 
@@ -148,6 +161,20 @@ p > a:hover{
   color:#9b1421;
 }
 
+/* menu burger border: */
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:focus
+ {
+    border-color: #c17077;
+	background-color:#debcbf;
+}
+.navbar-default .navbar-toggle:hover {
+	background-color:#efd9db;
+}
+/* burger line colour: */
+.navbar-default .navbar-toggle .icon-bar{
+	background-color:#c17077;
+}
 .hero-image-ed
 {
 	background-image: url('../images/heroimage4.jpg');
@@ -160,6 +187,20 @@ p > a:hover{
 	border-width:12px;
 	/* themecolour 2: */
 	border-color:#c17077;
+}
+
+.hero-image-ed-xs
+{
+	background-image: url('../images/heroimage4.jpg');
+	background-size:auto 220px;
+	background-position: -450px 40px;
+	background-attachment: fixed;
+	background-repeat:repeat-x;
+	background-color:#ffffff;
+	border-bottom-style:solid;
+	border-width:12px;
+	/* themecolour 2: */
+	border-color:#c17077;	
 }
 
 /* used to have a scrolling transparent window with fixed image "behind" */

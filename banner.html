@@ -49,7 +49,8 @@
 	</nav>
 </div>
 <!-- horz non-scrolling banner image -->
-<div class="hero-image-ed" style="margin-top:40px;height:220px;"><div style="padding:40px;text-align:right;"><img width="400" src="images/ellie-dixon-logo.png"></div></div>
+<div class="hidden-xs hero-image-ed" style="margin-top:40px;height:220px;"><div style="padding:40px;text-align:right;"><img width="400" src="images/ellie-dixon-logo.png"></div></div>
+<div class="visible-xs hero-image-ed-xs" style="margin-top:40px;height:220px;"><div style="padding:40px;text-align:right;"><img width="140" src="images/ellie-dixon-logo-sm.png"></div></div>
 
 <!-- social links-->
 <!--
@@ -86,7 +87,7 @@
 								echo '><a';
 								echo ' href="'.$url.'" onClick="ga(\'send\',\'event\',\'Menu\',\'SelectBar\',\''.$title.'\');">';
 								echo '<span class="icon"><i class="fa fa-'.$icon.'" aria-hidden="true"></i></span>&nbsp;';
-								echo '<span class="hidden-xs">'.$title.'</span></a></li>';
+								echo '<span>'.$title.'</span></a></li>';
 							}
 							menuitem("Home",$homeURL."/home",$page,"home");
 							menuitem("About",$homeURL."/about",$page,"info-circle");
