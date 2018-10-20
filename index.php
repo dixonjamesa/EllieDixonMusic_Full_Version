@@ -7,9 +7,9 @@
   $sessiontimeout = false;
 
   // load configuration info:
-  require_once 'configed.php'; // configuration settings
+  require_once 'configed.php'; // configuration settings and database stuff
   if(file_exists('staging.php'))
-	require_once 'staging.php'; // additional configuration settings. If this file is present, then the root becomes the staging directory
+	require_once 'staging.php'; // If this file is present, then the root becomes the staging directory - for testing
   require_once 'visitor.php';
   require_once 'login.php';
 
@@ -73,6 +73,11 @@ if($page=='')
 
 //visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
 
+// put a horizontal spacer fixed image into the page
+function spacer($height, $margin, $image)
+{
+	echo '<div class="scroll-image-ed" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+}
 include 'banner.html';
 
 //phpinfo();

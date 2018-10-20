@@ -1,3 +1,10 @@
+/* to change colours, search for :
+ * 'themecolour 1' debcbf light accent colour 
+ * 'themecolour 2' c17077 darker accent colour
+ * 'themecolour 3' 9b1421 darkest accent used for links
+ * 'themecolour 4' b8525c
+ */
+ 
 html {
   background-color: whitesmoke;
   font-size: 14px;
@@ -13,18 +20,35 @@ body{
   color: #4a4a4a;
   font-weight: 400;
   line-height: 1.42857;
+  width:100%;
+  text-align:center;
+  background-color:#efd9db;
 }
 
-a{
-  color:#202020;
-  /*background-color:#cbddac;*/
-  /*background-image:url('../images/swoosh.jpg');
-  background-size:100% auto;
-  background-position: center center;
-  background-repeat:no-repeat;*/
+/* this is the first div on the page. Typically it will provide a max page width
+ * so you get 'body' colours down the sides
+ */
+.mainpage
+{
+	background-color:whitesmoke;
+	max-width:1200px;
+	text-align:left;
+	margin:0px auto;
 }
-a:hover{
-  color:#6b6283;
+
+/* links in any paragraph have a highlight effect */
+p > a{
+  /* themecolour 3: */	
+  color:#9b1421;
+  opacity:0.8;
+  background-image:url('../images/swoosh.png');
+  background-size:100% 95%;
+  background-position: center center;
+  background-repeat:no-repeat;
+}
+p > a:hover{
+  text-decoration: none;
+  opacity:1.0;
 }
 
 .icon {
@@ -37,15 +61,19 @@ a:hover{
   width: 24px;
 }
 
-.navbar{
+/* bar at the very top of the page. 
+ */
+.headernav{
     border: none;
     border-radius: 0;
-    background-color: #d1ddbd;
+	/* themecolour 1: */
+    background-color: #debcbf;
 }
 
+/* top left element. Is currently an image, but these are for if it is text */
 .navbar-brand{
   font-size:28px;
-  color:rgb(100,90,110);
+  color:#4a4a4a;
   text-shadow:none;
 }
 
@@ -53,52 +81,102 @@ a:hover{
  {
   max-height: 340px;
 }
-/* make the top nav bar transparent */
-.transparent {
-   background-color: rgba(0,0,0,0.0);
-   background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
-   background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-   background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-}
-
-.banner {
-  border:0 !important;
-}
 
 /* This is for the spacing of the top nav bar links */
-.nav > li > a{
-  padding: 15px 8px;
+.headernav > li > a
+{
+  padding: 15px 12px;
 }
 
-/* middle banner menu bar: */
-.banner {
-	/*background-color:#aba2c3;*/
-	background-color:#616a52;
+/* normal header tab: */
+.navbar-default .navbar-nav  > li > a,
+.navbar-default .navbar-nav  > li > a:hover,
+.navbar-default .navbar-nav  > li > a:focus
+{
+/* themecolour 1, 2: */
+  color:#ffffff;
+  background-color:#debcbf;
 }
-.banner > li > a{
+
+/* active (selected) header tab: */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus
+{
+/* themecolour 1, 2: */
+  color:#debcbf;
+  background-color:#c17077;
+}
+
+/* middle banner menu bar: theme colour */
+.banner {
+    border:0 !important;
+	/* themecolour 2: */
+	/*background-color:#aba2c3; looking forward purple */
+	/*background-color:#616a52; jungle green */
+	background-color:#c17077; /* growing pains */
+}
+
+/* links on a banner layout */
+.banner > li > a
+{
   -webkit-border: 0 !important;
   -moz-border: 0 !important;
   border: 0 !important ;
-  color: rgb(246,246,249);
-  padding: 8px 10px 4px 10px;
+  color:#ffffff;
+  padding: 8px 10px 2px 10px;
   }
   
 /* Hover over unselected tab: */
 .banner > li > a:hover {
-	/*background-color:#9b92b3;*/
-    background-color:#373b2e;
+	/* themecolour 4 */
+    background-color:#b8525c;
+	color:
     padding: 8px 10px 2px 10px;
 }
 
 /* active (selected) tab: */
-.banner > li.active > a {
-  /*color:#9b92b3;*/
-  color:#616a52;
+.banner > li.active > a 
+{
+/* themecolour 2: */
+  color:#c17077;
   padding: 8px 10px 4px 10px;
 }
 .banner > li.active > a:hover {
   padding: 8px 10px 4px 10px;
-  color:#373b2e;
+  /* themecolour 3 */
+  color:#9b1421;
+}
+
+.hero-image-ed
+{
+	background-image: url('../images/heroimage4.jpg');
+	background-size:auto 220px;
+	background-position: center 40px;
+	background-attachment: fixed;
+	background-repeat:repeat-x;
+	background-color:#ffffff;
+	border-bottom-style:solid;
+	border-width:12px;
+	/* themecolour 2: */
+	border-color:#c17077;
+}
+
+/* used to have a scrolling transparent window with fixed image "behind" */
+/* theme colour border */
+.scroll-image-ed
+{
+	background-image: url('../images/banner2.jpg');
+	background-size:1400px auto;
+	background-position: center 0px;
+	background-attachment: fixed;
+	background-repeat:repeat-x;
+	background-color:#ffffff;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:12px;
+	/* themecolour 2: */
+	border-color:#c17077;
 }
 
 /* middle site menu bar */
@@ -133,7 +211,6 @@ a:hover{
    padding:6px;
 }
 
-
 .gridspace { /* for use with row and col classes */
   padding:10px !important;
 }
@@ -163,12 +240,14 @@ a:hover{
 }
 
 .btn-ellied {
-    background:#aba2c3;
-    border-color:#746d86;
+	/* themecolour 2,4*/
+    background:#c17077;
+    border-color:#b8525c;
     color:white;
 }
 .btn-ellied:hover, .btn-ellied:active, .btn-ellied:visited {
-  background:#746d86;
+	/* themecolour 4 */
+  background:#b8525c;
   color:white;
 }
 
@@ -184,6 +263,12 @@ a:hover{
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+/* debug class to help with layout */
+.dbgshowborder{
+	border-style:solid;
+	border-width:1px;
 }
 
 .footer {

@@ -1,65 +1,92 @@
 <div class="container-fluid">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
+	<nav class="navbar navbar-default navbar-fixed-top headernav">
+		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ed-navbar-collapse" aria-expanded="false">
-        	<span class="sr-only">Toggle navigation</span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-        	<span class="icon-bar"></span>
-      	</button>
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 				<a class="navbar-brand" style="padding:6;" href="http://elliedixonmusic.com">
 				<!--img class="navbar-left" style="padding:0px;width:42px;height:42px;" src="<?php echo $homeURL;?>/images/ellie-dixon-thumb.jpg" alt="Ellie Dixon singer songwriter" title="ellie dixon"-->
 				 <img class="navbar-left" style="height:40px;padding-left:6px;" src="<?php echo $homeURL;?>/images/ellie-dixon-logo.png">
-			 </a>
-    	</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
+				</a>
+			</div>
+		<!-- top right of menu bar -->
 	    <div class="collapse navbar-collapse" id="ed-navbar-collapse">
 	      <ul class="nav navbar-nav navbar-right">
-					<li><a href="https://www.facebook.com/elliedixonmusic/" onClick="ga('send','event','Social','Select','Facebook');">
-								<span class="icon"><i class="icon fa fa-facebook"></i></span>
-								<span>Facebook</span>
-							</a>
-					</li>
-          <li><a href="https://www.youtube.com/c/EllieDixonMusic" onClick="ga('send','event','Social','Select','YouTube');">
-                <span class="icon"><i class="icon fa fa-youtube"></i></span>
-                <span>YouTube</span>
-              </a>
-					</li>
-					<li><a href="https://soundcloud.com/elliedixonmusic" onClick="ga('send','event','Social','Select','Soundcloud');">
-                <span class="icon"><i class="fa fa-soundcloud"></i></span>
-                <span>SoundCloud</span>
-            </a>
-					</li>
-					<li><a href="https://twitter.com/elliedmusic" onClick="ga('send','event','Social','Select','Twitter');">
-                <span class="icon"><i class="fa fa-twitter"></i></span>
-                <span>Twitter</span>
-            </a>
-					</li>
-					<li><a href="https://play.spotify.com/artist/4mvJltDSlBawXCZhq6NAso" onClick="ga('send','event','Social','Select','Spotify');">
-                <span class="icon"><i class="fa fa-spotify"></i></span>
-                <span>Spotify</span>
-            </a>
-					</li>
-				</ul>
-			</div>
-			</div>  <!-- navbar container -->
-		</nav>
+			<?php
+				function navbarmenuitem($title,$url,$page,$icon)
+				{
+					// build a menu bar link, including a font-awesome icon
+					echo '<li><a href="'.$url.'" onClick="ga(\'send\',\'event\',\'Social\',\'Select\',\''.$title.'\');">';
+					echo '<span class="icon"><i class="icon fa '.$icon.'"></i></span>';
+					echo '<span>'.$title.'</span></a></li>';
+				}
+				/*
+				navbarmenuitem("Facebook","https://www.facebook.com/elliedixonmusic/",$page,"fa-facebook");
+				navbarmenuitem("YouTube","https://www.youtube.com/c/EllieDixonMusic",$page,"fa-youtube");
+				navbarmenuitem("SoundCloud","https://soundcloud.com/elliedixonmusic",$page,"fa-soundcloud");
+				navbarmenuitem("Twitter","https://twitter.com/elliedmusic",$page,"fa-twitter");
+				navbarmenuitem("Spotify","https://play.spotify.com/artist/4mvJltDSlBawXCZhq6NAso",$page,"fa-spotify");
+				*/
+				menuitem("Home",$homeURL."/home",$page,"home");
+				menuitem("About",$homeURL."/about",$page,"info-circle");
+				menuitem("News",$homeURL."/news",$page,"newspaper-o");
+				menuitem("Videos",$homeURL."/videos",$page,"film");
+				menuitem("EP",$homeURL."/ep",$page,"music");
+				menuitem("Gallery",$homeURL."/gallery",$page,"image");
+				//menuitem("Press",$homeURL."/press",$page,"microphone");
+				//menuitem("Gigs",$homeURL."/gigs",$page,"thumbs-o-up");
+				if( isset($_SESSION['userAuth']) && $_SESSION['userAuth'] == "Full" ){
+						menuitem("Site",$homeURL."/site",$page,"wrench");
+				}
+			?>
+			</ul>
+		</div>
+		</div>  <!-- navbar container -->
+	</nav>
 </div>
-<div class="hero-image-ed" style="margin-top:40px;height:220px;"></div>
+<!-- horz non-scrolling banner image -->
+<div class="hero-image-ed" style="margin-top:40px;height:220px;"><div style="padding:40px;text-align:right;"><img width="400" src="images/ellie-dixon-logo.png"></div></div>
+
+<!-- social links-->
+<!--
+<div>
+    <ul class="nav navbar-nav">
+	<?php
+		function genmenuitem($title,$url,$page,$icon)
+		{
+			// build a menu bar link, including a font-awesome icon
+			echo '<li><a href="'.$url.'" onClick="ga(\'send\',\'event\',\'Social\',\'Select\',\''.$title.'\');">';
+			echo '<span class="icon"><i class="icon fa '.$icon.'"></i></span>';
+			echo '<span>'.$title.'</span></a></li>';
+		}
+		genmenuitem("Facebook","https://www.facebook.com/elliedixonmusic/",$page,"fa-facebook");
+		genmenuitem("YouTube","https://www.youtube.com/c/EllieDixonMusic",$page,"fa-youtube");
+		genmenuitem("SoundCloud","https://soundcloud.com/elliedixonmusic",$page,"fa-soundcloud");
+		genmenuitem("Twitter","https://twitter.com/elliedmusic",$page,"fa-twitter");
+		genmenuitem("Spotify","https://play.spotify.com/artist/4mvJltDSlBawXCZhq6NAso",$page,"fa-spotify");
+	?>
+	</ul>
+</div>
+-->
+
+<!-- Enable this to have a mid-level tabbed navigation bar
 
 		<div class="container-fluid banner" style="position: relative;">
 			<ul class="nav nav-tabs banner">
 							<?php
-							function menuitem($title,$name,$page,$icon)
+							function menuitem($title,$url,$page,$icon)
 							{
 								// build a menu bar link, including a font-awesome icon
 								echo '<li role="presentation" ';
 								if(strtolower($page)==strtolower($title)) echo ' class="active"';
 								echo '><a';
-								echo ' href="'.$name.'" onClick="ga(\'send\',\'event\',\'Menu\',\'SelectBar\',\''.$name.'\');">';
-                echo '<span class="icon"><i class="fa fa-'.$icon.'" aria-hidden="true"></i></span>&nbsp;';
-                echo '<span class="hidden-xs">'.$title.'</span></a></li>';
+								echo ' href="'.$url.'" onClick="ga(\'send\',\'event\',\'Menu\',\'SelectBar\',\''.$title.'\');">';
+								echo '<span class="icon"><i class="fa fa-'.$icon.'" aria-hidden="true"></i></span>&nbsp;';
+								echo '<span class="hidden-xs">'.$title.'</span></a></li>';
 							}
 							menuitem("Home",$homeURL."/home",$page,"home");
 							menuitem("About",$homeURL."/about",$page,"info-circle");
@@ -75,3 +102,4 @@
 							?>
 				</ul>
 			</div>
+-->
