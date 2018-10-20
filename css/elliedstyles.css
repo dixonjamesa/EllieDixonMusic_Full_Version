@@ -50,6 +50,7 @@ p > a{
 p > a:hover{
   text-decoration: none;
   opacity:1.0;
+  color:#9b1421;
 }
 
 .icon {
@@ -206,6 +207,20 @@ p > a:hover{
 /* used to have a scrolling transparent window with fixed image "behind" */
 /* theme colour border */
 .scroll-image-ed
+{
+	background-image: url('../images/banner2.jpg');
+	background-size:1280px auto;
+	background-position: center 0px;
+	background-attachment: fixed;
+	background-repeat:repeat-x;
+	background-color:#ffffff;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:12px;
+	/* themecolour 2: */
+	border-color:#c17077;
+}
+.scroll-image-ed-sm
 {
 	background-image: url('../images/banner2.jpg');
 	background-size:auto 100%;
