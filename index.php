@@ -76,7 +76,8 @@ if($page=='')
 // put a horizontal spacer fixed image into the page
 function spacer($height, $margin, $image)
 {
-	echo '<div class="scroll-image-ed" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+	echo '<div class="scroll-image-ed hidden-xs" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+	echo '<div class="scroll-image-ed visible-xs" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
 }
 include 'banner.html';
 
