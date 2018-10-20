@@ -19,6 +19,7 @@ if( $ipaddr == '::1' ) {
   $homeURL="/EllieDixonMusic";
 }
 else {
+	// live server environment
   $servername="localhost";
   $sqluser="ellied";
   $sqlpass="SdJgngoe3458";

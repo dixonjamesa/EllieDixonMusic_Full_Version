@@ -7,16 +7,17 @@
 		{
 			global $homeURL;
 			echo '<h1 style="text-align:center">Growing Pains EP out now!</h1>';
-			echo '<p style="font-size:14pt;text-align:center;">My latest EP, <a href="'.$homeURL.'/ep" title="Ellie Dixon EP Growing Pains">Growing Pains</a> is now available for download!</p>';
-            echo '<p style="font-size:16px;margin-bottom:16px;text-align:center;">You can find it on any of the following:</p>';
+			echo '<p style="font-size:14pt;text-align:center;">My latest EP,<a href="'.$homeURL.'/ep" title="Ellie Dixon EP Growing Pains"> Growing Pains </a>is now available for download!</p>';
+            echo '<table style="width:100%"><tr><td><p style="font-size:16px;margin-bottom:4px;text-align:center;">Listen now...</p><div style="width:100%;text-align:center;"><iframe class="display:block;" src="https://embed.spotify.com/?uri=spotify:album:6jWZKvLyz0knGpjBuX0tTU&theme=white" width="240" height="250" frameborder="0" allowtransparency="true"></iframe></div> <!-- player widget -->';
+            echo '</td><td valign="top" style="padding:0px 10px;"><p style="font-size:16px;margin-bottom:4px;text-align:center;">Or find it on...</p>';
             echo '<p style="margin-bottom:24px;text-align:center;">';
-                echo '<a onClick="ga(\'send\',\'event\',\'Store\',\'iTunes\',\'GrowingPains\');" href="https://itunes.apple.com/gb/album/growing-pains-ep/1436541677?mt=1&app=music"><img style="height:28px" src="'.$homeURL.'/images/badgeitunes.png"></a>';
-                echo '<a onClick="ga(\'send\',\'event\',\'Store\',\'Spotify\',\'GrowingPains\');" href="https://play.spotify.com/album/6jWZKvLyz0knGpjBuX0tTU"><img style="height:28px" src="'.$homeURL.'/images/badgespotify.png"></a>';
-                echo '<a onClick="ga(\'send\',\'event\',\'Store\',\'Google\',\'GrowingPains\');" href="https://play.google.com/store/music/album/Ellie_Dixon_Growing_Pains?id=Buz7ubclzlzqfxj3cq4w5fxg5c4&hl=en_GB"><img style="height:28px" src="'.$homeURL.'/images/badgegoogleplay.png"></a>';
-                echo '<a onClick="ga(\'send\',\'event\',\'Store\',\'Amazon\',\'GrowingPains\');" href="https://www.amazon.co.uk/Growing-Pains-Ellie-Dixon/dp/B07HFLQ32T"><img style="height:28px" src="'.$homeURL.'/images/badgeamazon.png"></a>';
-            echo '</p>';
-            echo '<div style="text-align:center;">';
-                echo '<iframe class="display:block;" src="https://embed.spotify.com/?uri=spotify:album:6jWZKvLyz0knGpjBuX0tTU&theme=white" width="300" height="340" frameborder="0" allowtransparency="true"></iframe> <!-- player widget -->';
+                echo '<br><a onClick="ga(\'send\',\'event\',\'Store\',\'iTunes\',\'GrowingPains\');" href="https://itunes.apple.com/gb/album/growing-pains-ep/1436541677?mt=1&app=music"><img style="height:28px" src="'.$homeURL.'/images/badgeitunes.png"></a>';
+                echo '<br><br><a onClick="ga(\'send\',\'event\',\'Store\',\'Spotify\',\'GrowingPains\');" href="https://play.spotify.com/album/6jWZKvLyz0knGpjBuX0tTU"><img style="height:28px" src="'.$homeURL.'/images/badgespotify.png"></a>';
+                echo '<br><br><a onClick="ga(\'send\',\'event\',\'Store\',\'Google\',\'GrowingPains\');" href="https://play.google.com/store/music/album/Ellie_Dixon_Growing_Pains?id=Buz7ubclzlzqfxj3cq4w5fxg5c4&hl=en_GB"><img style="height:28px" src="'.$homeURL.'/images/badgegoogleplay.png"></a>';
+                echo '<br><br><a onClick="ga(\'send\',\'event\',\'Store\',\'Amazon\',\'GrowingPains\');" href="https://www.amazon.co.uk/Growing-Pains-Ellie-Dixon/dp/B07HFLQ32T"><img style="height:28px" src="'.$homeURL.'/images/badgeamazon.png"></a>';
+            echo '</p></td></tr></table>';
+			echo '<p style="font-size:14pt;margin-top:10px;text-align:center;">Or buy one of these gorgeous CDs!<br><a href="mailto:contact@elliedixonmusic.com"> Contact me </a>if you\'d like one for £10 plus P&amp;P</p>';
+			echo '<div style="text-align:center;"><img width="320" src="images/growingcds.jpg">';        
             echo '</div>';
 		}
 	?>

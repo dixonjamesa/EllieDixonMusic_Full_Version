@@ -1,20 +1,22 @@
 
-  <article class="media news">
+  <article class="media video">
     <div class="media-body">
-      <div>
-        <p>
-          <strong><?php echo "$videonames[$videonumber]";?></strong>
-		        <small><?php echo "$videoauthors[$videonumber]";?></small>
-          <br>
-		<div class="videoWrapper" >
-			<div id="<?php echo "ytplayer".$videonumber;?>">
-				loading...
-				<!-- script code inserts video here -->
-			</div>
-		</div>
-        </p>
+      <div style="cursor: pointer;" onclick="changevideo('<?php echo $videolist[$videonumber];?>');">
+		<table><tr>
+			<td>
+				<img width="120" src="images/videothumbs/<?php echo $videothumbs[$videonumber];?>"></span>
+			</td>
+			<td>
+				<p style="padding:2px;font-size:15px;">
+					<strong><?php echo $videonames[$videonumber];?></strong>
+					<br>
+					<small><?php echo $videoauthors[$videonumber];?></small>
+				</p>
+			</td>
+		</tr></table>
       </div>
-<!--
+
+	  <!--
       <nav class="level">
 		 <div class="level-left"></div>
         <div class="level-right">
@@ -29,6 +31,6 @@
           </a>
         </div>
       </nav>
-	  -->
+	-->  
     </div>
   </article>

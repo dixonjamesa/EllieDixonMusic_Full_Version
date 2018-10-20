@@ -38,7 +38,7 @@ body{
 }
 
 /* links in any paragraph have a highlight effect */
-p > a{
+p > a {
   /* themecolour 3: */	
   color:#9b1421;
   opacity:0.8;
@@ -258,8 +258,14 @@ p > a:hover{
 }
 
 .news {
-   background-color:#eee;
+	background-color:#efd9db;	
    padding:14px;
+}
+
+.video {
+	padding: 8px;
+	color:#c17077;
+	background-color:#efd9db;	
 }
 
 .gigs {
@@ -269,6 +275,10 @@ p > a:hover{
 
 .gridspace { /* for use with row and col classes */
   padding:10px !important;
+}
+
+.vidspace{ /* used for spacing video boxes on videos page */
+	padding: 4px !important;
 }
 
 .is-64x64{
