@@ -77,7 +77,7 @@ if($page=='')
 function spacer($height, $margin, $image)
 {
 	echo '<div class="scroll-image-ed hidden-xs" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
-	echo '<div class="scroll-image-ed-sm visible-xs" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+	echo '<div class="scroll-image-ed-sm visible-xs" style="background:#efd9db; background-image:none;opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
 }
 include 'banner.html';
 
