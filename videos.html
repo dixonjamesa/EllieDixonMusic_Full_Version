@@ -23,32 +23,70 @@ add_video("DnyZZgCbTxs", "falsefires.jpg", "False Fires", "Ellie Dixon", "Fires"
 add_video("P5CIetPkhpk", "headingeast.jpg", "Heading East", "Ellie Dixon", "HEast");
 add_video("q2NvBgiGxw8", "replay.jpg", "Replay", "Ellie Dixon", "Replay");
 /* DIY */
+add_video("y-_nAYcebT0", "feelitstill.jpg", "Feel It Still", "Portugal The Man", "FeelItStill");
 add_video("KxO3K8yskls", "lushlife.jpg", "Lush Life", "Zara Larsson", "Lush");
 add_video("ENbVo-HTsgY", "cheapthrills.jpg", "Cheap Thrills", "Sia", "Thrills");
 /* Collabs */
-add_video("yYW21-borlw", "", "Uptown Funk", "Bruno Mars", "UptownFunk");
-add_video("ekoBO-TuBPw", "", "All Star", "Smashmouth", "AllStar");
-add_video("JCGcEBc8-Ss", "", "Nothing Arrived", "Villagers", "Nothing");
-add_video("ssdyPMlcWVg", "", "Breezeblocks", "Alt-J", "Breeze");
+add_video("CoBZX1ABbRs", "pumpedup.jpg", "Pumped Up Kicks vs IDGAF", "Foster the People / Dua Lipa", "PumpedUp");
+add_video("OLLRLktEvHw", "pompeiigun.jpg", "Pompeii vs Shotgun", "Bastille / George Ezra", "PompeiiGun");
+add_video("yYW21-borlw", "uptownfunk.jpg", "Uptown Funk", "Bruno Mars", "UptownFunk");
+add_video("ekoBO-TuBPw", "allstar.jpg", "All Star", "Smashmouth", "AllStar");
+add_video("U3WhbHV2MN4", "soulsister.jpg", "Hey Soul Sister", "Train", "SoulSister");
+add_video("N3iMS-X8Xx4", "holdback.jpg", "Hold Back the River", "James Bay", "HoldBack");
+add_video("ssdyPMlcWVg", "breezeblocks.jpg", "Breezeblocks", "Alt-J", "Breeze");
 /* Covers */
 add_video("XoG6vvGqwNg", "dancetothis.jpg", "Dance To This", "Troye Sivan & Ariana Grande", "DanceToThis");
-add_video("Aicmc1Dmt8c", "palosanto.jpg", "Palo Santo", "years & Years", "PaloSanto");
-add_video("35rWWk11pHA", "", "Redbone", "Childish Gambino", "Redbone");
-add_video("JLQo4YXZ6dg", "", "Mercy", "Shawn Mendes", "Mercy");
-add_video("7qt67SLrsAM", "", "Hometown Glory", "Adele", "Hometown");
-add_video("lpuCh8AXc28", "", "Dancing on my Own", "Robyn", "Dancing");
-add_video("mxsM-pW8XNI", "", "Elastic Heart", "Sia", "Elastic");
-add_video("lharlGvaJNM", "", "Everybody Wants to Rule the World", "Tears for Fears", "RuleWorld");
-add_video("DwFOzSO1xYc", "", "Left Hand Free", "Alt-J", "LeftHand");
-add_video("W3usHpl5as0", "", "Can't feel my Face", "The Weeknd", "Weeknd");
-add_video("1bzGV6wJw5c", "", "Sorry", "Justin Bieber", "Sorry");
-add_video("dlOuKLaL-5g", "", "I Need a Dollar", "Aloe Black", "Dollar");
-add_video("rfn184Pyp_A", "", "Rather Be", "Clean Bandit", "RatherBe");
-add_video("Y_CLRTFYkz0", "", "White Christmas", "Irving Berlin", "WhiteC");
-
+add_video("Aicmc1Dmt8c", "palosanto.jpg", "Palo Santo", "Years & Years", "PaloSanto");
+add_video("2H35opvuako", "toxichabits.jpg", "Toxic vs Habits", "Britney Spears / Tove Lo", "ToxicHabits");
+add_video("35rWWk11pHA", "redbone.jpg", "Redbone", "Childish Gambine", "Redbone");
+add_video("JLQo4YXZ6dg", "mercy.jpg", "Mercy", "Shawn Mendes", "Mercy");
+add_video("7qt67SLrsAM", "hometown.jpg", "Hometown Glory", "Adele", "Hometown");
+add_video("lpuCh8AXc28", "dancingown.jpg", "Dancing on my Own", "Robyn", "Dancing");
+add_video("mxsM-pW8XNI", "elasticheart.jpg", "Elastic Heart", "Sia", "Elastic");
+add_video("lharlGvaJNM", "ruletheworld.jpg", "Everybody Wants to Rule the World", "Tears for Fears", "RuleWorld");
+add_video("DwFOzSO1xYc", "lefthand.jpg", "Left Hand Free", "Alt-J", "LeftHand");
+add_video("W3usHpl5as0", "feelface.jpg", "Can't feel my Face", "The Weeknd", "Weeknd");
+add_video("1bzGV6wJw5c", "sorry.jpg", "Sorry", "Justin Bieber", "Sorry");
+add_video("dlOuKLaL-5g", "needadollar.jpg", "I Need a Dollar", "Aloe Black", "Dollar");
+add_video("rfn184Pyp_A", "ratherbe.jpg", "Rather Be", "Clean Bandit", "RatherBe");
+/* Christmas */
+add_video("nBMlnGJHagk", "allchristmas.jpg", "All I Want for Christmas", "Mariah Carey", "AllChristmas");
+add_video("Y_CLRTFYkz0", "whitechristmas.jpg", "White Christmas", "Irving Berlin", "WhiteC");
 $videonumber = -1;
 ?>
-		<div class="container-fluid" style="padding:20px;">
+
+	<style type="text/css">
+			.AnimatedButton {
+				transition: all 0.2s;
+			}
+			.AnimatedButton:active {
+				transform:scale(0.9);
+			}
+	</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script type="text/javascript">
+		function setupButton(element) {
+			element.addEventListener('click', function() {
+						this.style.animation-name = 'buttonAnimation';
+						// and play a sound
+						//document.getElementById('buttonSound').play();
+				}, false);
+				element.addEventListener('AnimationEnd',function(){
+						this.style.animation-name = '';
+			}, false);
+		}
+
+      $(document).ready(function(){
+                  var buttons = document.getElementsByClassName('AnimatedButton');
+                  var i;
+                  for(i=0;i<buttons.length; i++)
+                  {
+                        setupButton(buttons[i]);
+                  }
+          });
+    </script>
+
+	<div class="container-fluid" style="padding:20px;">
 		<div class="video" style="width:60%;margin:0 auto;">
 			<div class="videoWrapper" >
 				<div id="ytplayer">
@@ -57,59 +95,77 @@ $videonumber = -1;
 			</div>
 		</div>
 
-			<h1 class="title">
-				Originals
-			</h1>
-				<div class="row">
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				</div>
-				<div class="row">
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				</div>
-				<h1 class="title">
-					DIY Covers
-				</h1>
-				<div class="row">
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-
-			  	</div>
-					<h1 class="title">
-						Collabs
-					</h1>
-
-					<div class="row">
-
-					  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-					  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-					  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-
-				  	</div>
-
-
-				<h1 class="title">
-					Covers
-				</h1>
-
-				<div class="row">
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				</div>
-				<div class="row">
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				</div>
-				<div class="row">
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
-				</div>
+		<h1 class="title">
+			Originals
+		</h1>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
 		</div>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<h1 class="title">
+			DIY Covers
+		</h1>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<h1 class="title">
+			Collabs
+		</h1>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<h1 class="title">
+			Covers
+		</h1>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+		<h1 class="title">
+			Christmas
+		</h1>
+		<div class="row">
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		  <div class="col-sm-4 vidspace"><?php $videonumber++; include 'video.html';?></div>
+		</div>
+	</div>
 
 <!-- Youtube video player -->
 <script>

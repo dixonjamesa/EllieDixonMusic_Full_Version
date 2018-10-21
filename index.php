@@ -57,12 +57,15 @@ include 'head.html';
 
 function write_logfile($what)
 {
-	$logfile = file_put_contents('log.txt', $what.PHP_EOL, FILE_APPEND | LOCK_EX );
+	global $date;
+	
+	$out = $date.":  ".$what;
+	$logfile = file_put_contents('log.txt', $out.PHP_EOL, FILE_APPEND | LOCK_EX );
 }
 
 /* ------------- get data into variables ----------- */
 $date = new DateTime();
-$date = $date->format("y:m:d H:i:s");
+$date = $date->format("y/m/d H:i:s");
 $page = strtolower($rpage);
 
 if($page=='')
@@ -71,15 +74,8 @@ if($page=='')
 	$page='home';
 }
 
+// log this visit
 //visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
-
-// put a horizontal spacer fixed image into the page
-function spacer($height, $margin, $image)
-{
-	echo '<div class="scroll-image-ed hidden-xs" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
-	echo '<div class="scroll-image-ed-sm visible-xs" style="background:#efd9db; background-image:none;opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
-}
-include 'banner.html';
 
 //phpinfo();
 /* see if we support mod_rewrite:
@@ -92,15 +88,32 @@ else {
     echo "Apache is not loading mod_rewrite.";
 }
 */
+// function to put a horizontal spacer fixed image into the page
+function spacer($height, $margin, $image)
+{
+	echo '<div class="scroll-image-ed hidden-xs" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+	echo '<div class="scroll-image-ed-sm visible-xs" style="background:#efd9db; background-image:none;opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+}
 
+// first put he banner at the top of the page
+include 'banner.html';
+
+
+// Now decide exactly what page contents to show...
+// If the page exists, and no login is required for it, then proceed to show it
+// if it doesn't exist, show the page missing text
+// if login is required, force the login page
 if(login_proceed($msdb_connection, $page)){
   //echo 'GET PAGE';  /* It's OK to include the actual contents then... */
+  write_logfile("Visitor ".$ipaddr." to page: ".$page);
   if (file_exists ( $page.'.html' ) )
   {
+	  // page exists, let's go...
       include $page.'.html';
   }
   else{
-      echo "<div><p style='font-size:14pt;padding:20px;text-align:center;'>Oh dear! It appears the page ".$page." you are looking for doesn't exist.</p>";
+	  // page doesn't exist, so tell the visitor
+      echo "<div><p style='font-size:14pt;padding:20px;text-align:center;'>Oh dear! It appears the page '".$page."' you are looking for doesn't exist.</p>";
       echo "<p style='font-size:14pt;padding:20px;text-align:center;'>Click <a href='http://elliedixonmusic.com'>here</a> to go home.</p></div>";
   }
 }
@@ -108,6 +121,8 @@ else {
   // not logged in, but needs to be...
   include 'login.html';
 }
+
+// now include the common page footer - social links etc.
 include 'foot.html';
 
 $msdb_connection->close();
