@@ -113,8 +113,11 @@ if(login_proceed($msdb_connection, $page)){
   }
   else{
 	  // page doesn't exist, so tell the visitor
-      echo "<div><p style='font-size:14pt;padding:20px;text-align:center;'>Oh dear! It appears the page '".$page."' you are looking for doesn't exist.</p>";
+      echo "<div><p style='font-size:14pt;padding:20px;text-align:center;'>Oh dear! It appears the page you are looking for doesn't exist.</p>";
       echo "<p style='font-size:14pt;padding:20px;text-align:center;'>Click <a href='http://elliedixonmusic.com'>here</a> to go home.</p></div>";
+	  echo "<p>";
+	  phpinfo();
+	  echo "<\p>";
   }
 }
 else {
@@ -124,6 +127,7 @@ else {
 
 // now include the common page footer - social links etc.
 include 'foot.html';
+
 
 $msdb_connection->close();
 ob_end_flush(); ?>
