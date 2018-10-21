@@ -1,0 +1,12 @@
+#!/bin/sh
+
+SOURCE="$PWD"
+DEST="/var/www/html"
+cp $DEST -r /var/www/htmlold
+rm -rf $DEST
+mkdir $DEST
+cp $SOURCE/* -r $DEST
+cp $SOURCE/.htaccess $DEST
+rm $DEST/deploy*
+rm -rf $DEST/sourcefiles
+rm $DEST/staging*
