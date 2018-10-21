@@ -7,7 +7,7 @@
 // then adds the specific page hit to the pagehits table
 function visitor_logvisit($ip, $date, $page)
 {
-  global $msdb_connection;
+	global $msdb_connection;
 
   {
     // see if the ip is already in the visitors table:
@@ -45,14 +45,6 @@ function visitor_logvisit($ip, $date, $page)
 
         $msdb_connection->query($sql);
       }
-      // send to mirror display as a brand new visitor
-      $udmessage = $geodata['city'].", ".$geodata['region'].", ".$geodata['country'];
-      $udmessage = str_replace(" ","%20",$udmessage); // to properly format the url
-      curl_setopt($cu, CURLOPT_URL, "general.usdixons.com:6097/syslog?type=INFO&message=".$udmessage);
-      curl_setopt($cu, CURLOPT_RETURNTRANSFER, 1);
-      $wresult = curl_exec($cu);
-
-      curl_close($cu);
     }
     // write out to visitors log
     //$visfile = file_put_contents('visitors.txt', "<p>".$date.": ".$ip.": ".$page."</p>".PHP_EOL, FILE_APPEND | LOCK_EX );

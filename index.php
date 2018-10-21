@@ -74,10 +74,34 @@ if($page=='')
 	$page='home';
 }
 
+//error handler function
+function customError($errno, $errstr) {
+  /* do nothing*/
+}
+
+//set error handler
+set_error_handler("customError");
+
 // log this visit
 //visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
+function sendtomirror($ip, $page)
+{
+	// send to mirror display as a brand new visitor
+	$cu = curl_init();
+	// look up location details of the ip we have...
+	curl_setopt($cu, CURLOPT_URL, "ipinfo.io/".$ip);
+	curl_setopt($cu, CURLOPT_RETURNTRANSFER, 1);
 
-//phpinfo();
+	$georesult = curl_exec($cu);
+	$geodata = json_decode($georesult, true);
+	$udmessage = $geodata['city'].", ".$geodata['region'].", ".$geodata['country'].":".$page.":".$ip;
+	$udmessage = str_replace(" ","%20",$udmessage); // to properly format the url
+	curl_setopt($cu, CURLOPT_URL, "general.usdixons.com:6097/syslog?type=INFO&message=".$udmessage);
+	curl_setopt($cu, CURLOPT_RETURNTRANSFER, 1);
+	$wresult = curl_exec($cu);
+
+	curl_close($cu);
+}
 /* see if we support mod_rewrite:
 $mods = apache_get_modules();
 if (in_array('mod_rewrite', $mods)) {
@@ -106,6 +130,7 @@ include 'banner.html';
 if(login_proceed($msdb_connection, $page)){
   //echo 'GET PAGE';  /* It's OK to include the actual contents then... */
   write_logfile("Visitor ".$ipaddr." to page: ".$page);
+  sendtomirror($ipaddr, $page);
   if (file_exists ( $page.'.html' ) )
   {
 	  // page exists, let's go...
@@ -115,9 +140,9 @@ if(login_proceed($msdb_connection, $page)){
 	  // page doesn't exist, so tell the visitor
       echo "<div><p style='font-size:14pt;padding:20px;text-align:center;'>Oh dear! It appears the page you are looking for doesn't exist.</p>";
       echo "<p style='font-size:14pt;padding:20px;text-align:center;'>Click <a href='http://elliedixonmusic.com'>here</a> to go home.</p></div>";
-	  echo "<p>";
-	  phpinfo();
-	  echo "<\p>";
+	  //echo "<p>";
+	  //phpinfo();
+	  //echo "<\p>";
   }
 }
 else {

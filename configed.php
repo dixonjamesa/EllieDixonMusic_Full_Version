@@ -11,6 +11,7 @@ if( $ipaddr == '::1' ) {
 //  $servername="localhost:8889";
 //  $sqluser="root";
 //  $sqlpass="root";
+
 // PC local hosting with WAMP
   $servername="localhost:3306";
   $sqluser="root";
@@ -19,7 +20,7 @@ if( $ipaddr == '::1' ) {
   $homeURL="/EllieDixonMusic";
 }
 else {
-	// live server environment
+// live server environment
   $servername="localhost";
   $sqluser="ellied";
   $sqlpass="SdJgngoe3458";
