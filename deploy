@@ -1,8 +1,8 @@
 #!/bin/sh
 
 SOURCE="$PWD"
-DEST="/var/www/html"
-cp $DEST -r /var/www/htmlold
+DEST="/var/www/elliedixonmusic"
+cp $DEST -r /var/www/edmold
 rm -rf $DEST
 mkdir $DEST
 cp $SOURCE/* -r $DEST
