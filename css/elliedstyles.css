@@ -9,7 +9,7 @@
  */
  
 html {
-  background-color: whitesmoke;
+  background-color: bfeaf1;
   font-size: 14px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -33,10 +33,18 @@ body{
  */
 .mainpage
 {
-	background-color:whitesmoke;
+	background-color:bfeaf1;
 	max-width:1200px;
 	text-align:left;
 	margin:0px auto;
+}
+.mainnav
+{
+	background-color:bfeaf1 !important;	
+}
+.container, .container-fluid
+{
+	background-color:whitesmoke;
 }
 
 /* links in any paragraph have a highlight effect */
