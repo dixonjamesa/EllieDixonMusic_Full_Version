@@ -113,8 +113,8 @@ else {
 // function to put a horizontal spacer fixed image into the page
 function spacer($height, $margin, $image)
 {
-	echo '<div class="scroll-image-ed hidden-xs" style="background-image:url(\''.$image.'\');opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
-	echo '<div class="scroll-image-ed-sm visible-xs" style="background:#efd9db; background-image:none;opacity:0.8;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+	echo '<div class="scroll-image-ed hidden-xs" style="background-image:url(\''.$image.'\');opacity:0.7;margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
+	echo '<div class="scroll-image-ed scroll-image-ed-sm visible-xs" style="margin:'.$margin.'px 0px;height:'.$height.'px;"></div>';
 }
 
 // first put he banner at the top of the page

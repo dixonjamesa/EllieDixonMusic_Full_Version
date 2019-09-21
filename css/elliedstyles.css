@@ -25,7 +25,7 @@ body{
   line-height: 1.42857;
   width:100%;
   text-align:center;
-  background-color:#d4eff3;
+  background-color:#bfeaf1;
 }
 
 /* this is the first div on the page. Typically it will provide a max page width
@@ -186,7 +186,7 @@ p > a:hover{
 {
 	background-image: url('../images/heroimage4.jpg');
 	background-size:auto 220px;
-	background-position: center 50px;
+	background-position: center 54px;
 	background-attachment: fixed;
 	background-repeat:repeat-x;
 	background-color:#ffffff;
@@ -221,18 +221,11 @@ p > a:hover{
 }
 .scroll-image-ed-sm
 {
-	background-image: url('../images/banner2.jpg');
 	background-size:auto 100%;
-	background-position: center 0px;
-	background-attachment: fixed;
-	background-repeat:repeat-x;
-	background-color:#ffffff;
-	border-top-style:solid;
-	border-bottom-style:solid;
-	border-width:12px;
-	/* themecolour 2: */
-	border-color:#bfeaf1;
-}
+	background:#d4eff3; 
+	background-image:none;
+	/*opacity:0.8;*/
+	}
 
 /* middle site menu bar */
 .esitemenu > li > a{
