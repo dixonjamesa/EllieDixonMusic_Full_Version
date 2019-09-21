@@ -2,7 +2,11 @@ RewriteEngine on
 #preferred domain removes the www. :
 #RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# force HTTPS
+RewriteCond %{HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,NE,L] 
 
 #Make sure directory doesn't already exist:
 #RewriteCond %{REQUEST_FILENAME} !-d
