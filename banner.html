@@ -17,6 +17,16 @@
 	    <div class="collapse navbar-collapse" id="ed-navbar-collapse">
 	      <ul class="nav navbar-nav navbar-right">
 			<?php
+				function menuitem($title,$url,$page,$icon)
+				{
+					// build a menu bar link, including a font-awesome icon
+					echo '<li role="presentation" ';
+					if(strtolower($page)==strtolower($title)) echo ' class="active"';
+					echo '><a';
+					echo ' href="'.$url.'" onClick="ga(\'send\',\'event\',\'Menu\',\'SelectBar\',\''.$title.'\');">';
+					echo '<span class="icon"><i class="fa fa-'.$icon.'" aria-hidden="true"></i></span>&nbsp;';
+					echo '<span>'.$title.'</span></a></li>';
+				}
 				function navbarmenuitem($title,$url,$page,$icon)
 				{
 					// build a menu bar link, including a font-awesome icon
@@ -49,8 +59,8 @@
 	</nav>
 </div>
 <!-- horz non-scrolling banner image -->
-<div class="hidden-xs hero-image-ed" style="margin-top:40px;height:220px;"><div style="padding:40px;text-align:right;"><img width="400" src="<?php echo $homeURL;?>/images/ellie-dixon-logo.png"></div></div>
-<div class="visible-xs hero-image-ed-xs" style="margin-top:40px;height:220px;"><div style="padding:40px;text-align:right;"><img width="140" src="<?php echo $homeURL;?>/images/ellie-dixon-logo-sm.png"></div></div>
+<div class="hidden-xs hero-image-ed" ><div style="padding:40px;padding-top:60px;text-align:right;"><img width="400" src="<?php echo $homeURL;?>/images/ellie-dixon-logo.png"></div></div>
+<div class="visible-xs hero-image-ed hero-image-ed-xs"><div style="padding:40px;text-align:right;"><img width="140" src="<?php echo $homeURL;?>/images/ellie-dixon-logo-sm.png"></div></div>
 
 <!-- social links-->
 <!--
@@ -79,16 +89,6 @@
 		<div class="container-fluid banner" style="position: relative;">
 			<ul class="nav nav-tabs banner">
 							<?php
-							function menuitem($title,$url,$page,$icon)
-							{
-								// build a menu bar link, including a font-awesome icon
-								echo '<li role="presentation" ';
-								if(strtolower($page)==strtolower($title)) echo ' class="active"';
-								echo '><a';
-								echo ' href="'.$url.'" onClick="ga(\'send\',\'event\',\'Menu\',\'SelectBar\',\''.$title.'\');">';
-								echo '<span class="icon"><i class="fa fa-'.$icon.'" aria-hidden="true"></i></span>&nbsp;';
-								echo '<span>'.$title.'</span></a></li>';
-							}
 							menuitem("Home",$homeURL."/home",$page,"home");
 							menuitem("About",$homeURL."/about",$page,"info-circle");
 							menuitem("News",$homeURL."/news",$page,"newspaper-o");

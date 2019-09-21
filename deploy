@@ -5,8 +5,6 @@ DEST="/var/www/elliedixonmusic"
 cp $DEST -r /var/www/edmold
 rm -rf $DEST
 mkdir $DEST
-cp $SOURCE/* -r $DEST
-cp $SOURCE/.htaccess $DEST
+cp $SOURCE/. -r $DEST
 rm $DEST/deploy*
 rm -rf $DEST/sourcefiles
-rm $DEST/staging*

@@ -3,9 +3,10 @@
 
 function login_proceed($msdb_conn, $page)
 {
-  global $sessionTimeout, $loginrequired, $loginfree, $sessiontimeout; // from configed.php
+  global $sessionTimeout, $loginrequired, $sessiontimeout; // from configed.php
+  // assume no login required:
   $requirelogin=false;
-  // look to see if the page is excepted using the loginfree array:
+  // look to see if the page requires a login, as defined by $loginrequired in configed.php:
   $arrlength = count($loginrequired);
 
   for($x = 0; $x < $arrlength; $x++) {

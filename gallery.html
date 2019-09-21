@@ -1,35 +1,29 @@
 <?php
-	$totalimages=12;
+	$totalimages=15;
 ?>
 	<div class="container-fluid">
 			<div class="row gridspace">
 				<div class="col-sm-6 col-md-4 gridspace">
 					<?php
-					for($i=0;$i<$totalimages/3;$i++)
+					for($i=0;$i<$totalimages;$i+=3)
 					{
-              if($i==0){
-                  // we do this for google search reasons - let's get her picture out there
-                  echo '<img class="tabimage" src="'.$homeURL.'/images/ellie-dixon.jpg" alt="ellie dixon singer songwriter">';
-              }
-              else{
-                  echo '<img class="tabimage" src="'.$homeURL.'/images/gallery/ellie-dixon-gallery-'.($i+1).'.jpg" alt="ellie dixon singer songwriter">';
-              }
+					echo '<img class="tabimage" src="'.$homeURL.'/images/gallery/ellie-dixon-gallery-'.($i+1).'.jpg" alt="ellie dixon singer songwriter">';
 				  }
 				  ?>
 				</div>
 				<div class="col-sm-6 col-md-4 gridspace">
 					<?php
-					for($i=0;$i<$totalimages/3;$i++)
+					for($i=0;$i<$totalimages;$i+=3)
 					{
-		  				echo '<img class="tabimage" src="'.$homeURL.'/images/gallery/ellie-dixon-gallery-'.($i+1+$totalimages/3).'.jpg" alt="ellie dixon singer songwriter">';
+		  				echo '<img class="tabimage" src="'.$homeURL.'/images/gallery/ellie-dixon-gallery-'.($i+2).'.jpg" alt="ellie dixon singer songwriter">';
 				  	}
 				  ?>
 				</div>
 				<div class="col-sm-6 col-md-4 gridspace">
 					<?php
-					for($i=0;$i<$totalimages/3;$i++)
+					for($i=0;$i<$totalimages;$i+=3)
 					{
-		  				echo '<img class="tabimage" src="'.$homeURL.'/images/gallery/ellie-dixon-gallery-'.($i+1+$totalimages*2/3).'.jpg" alt="ellie dixon singer songwriter">';
+		  				echo '<img class="tabimage" src="'.$homeURL.'/images/gallery/ellie-dixon-gallery-'.($i+3).'.jpg" alt="ellie dixon singer songwriter">';
 				  	}
 				  ?>
 				</div>

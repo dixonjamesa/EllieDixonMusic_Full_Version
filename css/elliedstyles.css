@@ -1,9 +1,11 @@
-/* to change colours, search for 'themecolour'
- * #9b1421 darkest accent used for links
- * #b8525c 
- * #c17077 darker accent colour
- * #debcbf light accent colour 
- * #efd9db lightest used for higlhights and body l/r borders
+/* to change colours, search for:
+ * #058193 darkest accent used for links
+ * # 
+ * #1996a9 darker accent colour including navbar icons
+ * #bfeaf1 light accent colour, including main banner background and dividing lines
+ * #d4eff3 lightest used for higlhights and body l/r borders
+
+
  */
  
 html {
@@ -23,7 +25,7 @@ body{
   line-height: 1.42857;
   width:100%;
   text-align:center;
-  background-color:#efd9db;
+  background-color:#d4eff3;
 }
 
 /* this is the first div on the page. Typically it will provide a max page width
@@ -40,7 +42,7 @@ body{
 /* links in any paragraph have a highlight effect */
 p > a {
   /* themecolour 3: */	
-  color:#9b1421;
+  color:#058193;
   opacity:0.8;
   background-image:url('../images/swoosh.png');
   background-size:100% 95%;
@@ -50,7 +52,7 @@ p > a {
 p > a:hover{
   text-decoration: none;
   opacity:1.0;
-  color:#9b1421;
+  color:#058193;
 }
 
 .icon {
@@ -69,7 +71,7 @@ p > a:hover{
     border: none;
     border-radius: 0;
 	/* themecolour 1: */
-    background-color: #debcbf;
+    background-color: #bfeaf1;
 }
 
 /* top left element. Is currently an image, but these are for if it is text */
@@ -79,6 +81,10 @@ p > a:hover{
   text-shadow:none;
 }
 
+.nav > li > a
+{
+	padding:15px 12px;
+}
 .navbar-static-top .navbar-collapse,
  {
   max-height: 340px;
@@ -87,15 +93,15 @@ p > a:hover{
 /* This is for the spacing of the top nav bar links */
 .headernav > li > a
 {
-  padding: 15px 12px;
+  padding: 12px 12px;
 }
 
 /* normal header tab: */
 .navbar-default .navbar-nav  > li > a
 {
 /* themecolour 1, 2: */
-  color:#c17077;
-  background-color:#debcbf;
+  color:#1996a9;
+  background-color:#bfeaf1;
 }
 
 /* normal header tab hover */
@@ -104,31 +110,29 @@ p > a:hover{
 {
 /* themecolour 1, 2: */
   color:#ffffff;
-  background-color:#c17077;
+  background-color:#1996a9;
 }
 
 /* active (selected) header tab: */
 .navbar-default .navbar-nav > .active > a
 {
 /* themecolour 1, 2: */
-  color:#c17077;
-  background-color:#efd9db;
+  color:#1996a9;
+  background-color:#d4eff3;
 }
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus
 {
 /* themecolour 1, 2: */
   color:#ffffff;
-  background-color:#c17077;
+  background-color:#1996a9;
 }
 
 /* middle banner menu bar: theme colour */
 .banner {
     border:0 !important;
 	/* themecolour 2: */
-	/*background-color:#aba2c3; looking forward purple */
-	/*background-color:#616a52; jungle green */
-	background-color:#c17077; /* growing pains */
+	background-color:#1996a9;
 }
 
 /* links on a banner layout */
@@ -144,8 +148,8 @@ p > a:hover{
 /* Hover over unselected tab: */
 .banner > li > a:hover {
 	/* themecolour 4 */
-    background-color:#b8525c;
-	color:
+    background-color:#058193;
+	color:#ffffff;
     padding: 8px 10px 2px 10px;
 }
 
@@ -153,55 +157,50 @@ p > a:hover{
 .banner > li.active > a 
 {
 /* themecolour 2: */
-  color:#c17077;
+  color:#1996a9;
   padding: 8px 10px 4px 10px;
 }
 .banner > li.active > a:hover {
   padding: 8px 10px 4px 10px;
   /* themecolour 3 */
-  color:#9b1421;
+  color:#058193;
 }
 
 /* menu burger border: */
 .navbar-default .navbar-toggle,
 .navbar-default .navbar-toggle:focus
  {
-    border-color: #c17077;
-	background-color:#debcbf;
+    border-color: #1996a9;
+	background-color:#bfeaf1;
 }
 .navbar-default .navbar-toggle:hover {
-	background-color:#efd9db;
+	background-color:#d4eff3;
 }
 /* burger line colour: */
 .navbar-default .navbar-toggle .icon-bar{
-	background-color:#c17077;
+	background-color:#1996a9;
 }
+
+/* used for the top-line image */
 .hero-image-ed
 {
 	background-image: url('../images/heroimage4.jpg');
 	background-size:auto 220px;
-	background-position: center 40px;
+	background-position: center 50px;
 	background-attachment: fixed;
 	background-repeat:repeat-x;
 	background-color:#ffffff;
 	border-bottom-style:solid;
-	border-width:12px;
-	/* themecolour 2: */
-	border-color:#c17077;
+	border-width:0px; /* 12px for a solid underline border */
+	border-color:#bfeaf1;
+	margin-top:40px;
+	height:230px;
 }
 
 .hero-image-ed-xs
 {
 	background-image: url('../images/heroimage4.jpg');
-	background-size:auto 220px;
-	background-position: -450px 40px;
-	background-attachment: fixed;
-	background-repeat:repeat-x;
-	background-color:#ffffff;
-	border-bottom-style:solid;
-	border-width:12px;
-	/* themecolour 2: */
-	border-color:#c17077;	
+	background-position: -450px 50px;
 }
 
 /* used to have a scrolling transparent window with fixed image "behind" */
@@ -218,7 +217,7 @@ p > a:hover{
 	border-bottom-style:solid;
 	border-width:12px;
 	/* themecolour 2: */
-	border-color:#c17077;
+	border-color:#bfeaf1;
 }
 .scroll-image-ed-sm
 {
@@ -232,7 +231,7 @@ p > a:hover{
 	border-bottom-style:solid;
 	border-width:12px;
 	/* themecolour 2: */
-	border-color:#c17077;
+	border-color:#bfeaf1;
 }
 
 /* middle site menu bar */
@@ -244,28 +243,28 @@ p > a:hover{
   padding: 8px 10px 4px 10px;
   }
 .esitemenu > li > a:hover {
-    background-color:#c17077;
+    background-color:#1996a9;
     padding: 8px 10px 2px 10px;
 }
 .esitemenu > li.active > a {
   color:white;
-  background-color:#c17077;
+  background-color:#1996a9;
   padding: 8px 10px 4px 10px;
 }
 .esitemenu > li.active > a:hover {
-  color:#c17077;
+  color:#1996a9;
   padding: 8px 10px 4px 10px;
 }
 
 .news {
-	background-color:#efd9db;	
+	background-color:#d4eff3;	
    padding:14px;
 }
 
 .video {
 	padding: 8px;
-	color:#c17077;
-	background-color:#efd9db;	
+	color:#1996a9;
+	background-color:#d4eff3;	
 }
 
 .gigs {
@@ -307,13 +306,13 @@ p > a:hover{
 
 .btn-ellied {
 	/* themecolour 2,4*/
-    background:#c17077;
-    border-color:#b8525c;
+    background:#1996a9;
+    border-color:#058193;
     color:white;
 }
 .btn-ellied:hover, .btn-ellied:active, .btn-ellied:visited {
 	/* themecolour 4 */
-  background:#b8525c;
+  background:#058193;
   color:white;
 }
 

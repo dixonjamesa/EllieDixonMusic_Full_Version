@@ -8,8 +8,6 @@
 
   // load configuration info:
   require_once 'configed.php'; // configuration settings and database stuff
-  if(file_exists('staging.php'))
-	require_once 'staging.php'; // If this file is present, then the root becomes the staging directory - for testing
   require_once 'visitor.php';
   require_once 'login.php';
 
@@ -130,7 +128,7 @@ include 'banner.html';
 if(login_proceed($msdb_connection, $page)){
   //echo 'GET PAGE';  /* It's OK to include the actual contents then... */
   write_logfile("Visitor ".$ipaddr." to page: ".$page);
-  sendtomirror($ipaddr, $page);
+  //sendtomirror($ipaddr, $page);
   if (file_exists ( $page.'.html' ) )
   {
 	  // page exists, let's go...

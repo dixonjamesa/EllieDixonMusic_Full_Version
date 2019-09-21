@@ -1,10 +1,11 @@
 #!/bin/sh
 
 SOURCE="$PWD"
-DEST="/var/www/elliedixonmusic/staging"
+DEST="/var/www/elliedixonmusic-staging"
+
 rm -rf $DEST
 mkdir $DEST
-cp $SOURCE/* -r $DEST
-rm $DEST/deploy*.*
+cp $SOURCE/. -r $DEST
+rm $DEST/deploy*
 rm -rf $DEST/sourcefiles
 
