@@ -1,18 +1,18 @@
 <h1>Registered Users</h1>
-<div class="container">
 <table class="table table-striped table-condensed">
 <thead>
 <tr>
   <th>ID</th>
   <th>Name</th>
   <th>Email</th>
+  <th>Created</th>
   <th>Auth</th>
 </tr>
 </thead>
 <tbody>
 <?php
 // Write out all users into this table:
-$res=$msdb_connection->query("SELECT userId, userFirst, userLast, userAuth, userEmail FROM users");
+$res=$msdb_connection->query("SELECT userId, userFirst, userLast, userAuth, userEmail, reg_date FROM users");
 
 for($i=0;$i<$res->num_rows;$i++)
 {
@@ -22,9 +22,9 @@ for($i=0;$i<$res->num_rows;$i++)
   <td><?php echo $row['userId'];?></td>
   <td><?php echo $row['userFirst'].' '.$row['userLast'];?></td>
   <td><?php echo $row['userEmail'];?></td>
+  <td><?php echo $row['reg_date'];?></td>
   <td><?php echo $row['userAuth'];?></td>
 </tr>
 <?php } ?>
 </tbody>
 </table>
-</div>

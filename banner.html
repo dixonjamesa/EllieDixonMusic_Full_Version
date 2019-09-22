@@ -34,39 +34,45 @@
 					echo '<span class="icon"><i class="icon fa '.$icon.'"></i></span>';
 					echo '<span>'.$title.'</span></a></li>';
 				}
-				/*
-				navbarmenuitem("Facebook","https://www.facebook.com/elliedixonmusic/",$page,"fa-facebook");
-				navbarmenuitem("YouTube","https://www.youtube.com/c/EllieDixonMusic",$page,"fa-youtube");
-				navbarmenuitem("SoundCloud","https://soundcloud.com/elliedixonmusic",$page,"fa-soundcloud");
-				navbarmenuitem("Twitter","https://twitter.com/elliedmusic",$page,"fa-twitter");
-				navbarmenuitem("Spotify","https://play.spotify.com/artist/4mvJltDSlBawXCZhq6NAso",$page,"fa-spotify");
-				*/
-				menuitem("Home",$homeURL."/home",$page,"home");
-				menuitem("About",$homeURL."/about",$page,"info-circle");
-				menuitem("News",$homeURL."/news",$page,"newspaper-o");
-				menuitem("Videos",$homeURL."/videos",$page,"film");
-				menuitem("EP",$homeURL."/ep",$page,"music");
-				menuitem("Gallery",$homeURL."/gallery",$page,"image");
-				//menuitem("Press",$homeURL."/press",$page,"microphone");
-				//menuitem("Gigs",$homeURL."/gigs",$page,"thumbs-o-up");
-				if( isset($_SESSION['userAuth']) && $_SESSION['userAuth'] == "Full" ){
-						menuitem("Site",$homeURL."/site",$page,"wrench");
+				function createMenu($homeURL, $page)
+				{
+					menuitem("Home",$homeURL."/home",$page,"home");
+					menuitem("About",$homeURL."/about",$page,"info-circle");
+					menuitem("News",$homeURL."/news",$page,"newspaper-o");
+					menuitem("Videos",$homeURL."/videos",$page,"film");
+					menuitem("EP",$homeURL."/ep",$page,"music");
+					menuitem("Gallery",$homeURL."/gallery",$page,"image");
+					//menuitem("Press",$homeURL."/press",$page,"microphone");
+					//menuitem("Gigs",$homeURL."/gigs",$page,"thumbs-o-up");
+					//if( isset($_SESSION['userAuth']) && $_SESSION['userAuth'] == "Full" )
+					{
+						menuitem("Friends",$homeURL."/friends",$page,"user");
+					}
+					/*
+					navbarmenuitem("Facebook","https://www.facebook.com/elliedixonmusic/",$page,"fa-facebook");
+					navbarmenuitem("YouTube","https://www.youtube.com/c/EllieDixonMusic",$page,"fa-youtube");
+					navbarmenuitem("SoundCloud","https://soundcloud.com/elliedixonmusic",$page,"fa-soundcloud");
+					navbarmenuitem("Twitter","https://twitter.com/elliedmusic",$page,"fa-twitter");
+					navbarmenuitem("Spotify","https://play.spotify.com/artist/4mvJltDSlBawXCZhq6NAso",$page,"fa-spotify");
+					*/
 				}
+				createMenu($homeURL, $page);
 			?>
 			</ul>
 		</div>
 		</div>  <!-- navbar container -->
 	</nav>
 </div>
-<!-- horz non-scrolling banner image -->
-<div class="hidden-xs hero-image-ed" ><div style="padding:40px;padding-top:60px;text-align:right;"><img width="400" src="<?php echo $homeURL;?>/images/ellie-dixon-logo.png"></div></div>
-<div class="visible-xs hero-image-ed hero-image-ed-xs"><div style="padding:40px;text-align:right;"><img width="140" src="<?php echo $homeURL;?>/images/ellie-dixon-logo-sm.png"></div></div>
+<!-- horizontal non-scrolling banner image -->
+<div class="hidden-xs hero-image-ed" ><div style="padding:40px;padding-top:60px;text-align:right;"><img width="400" src="<?php echo $homeURL;?>/images/ellie-dixon-logo-b.png"></div></div>
+<div class="visible-xs hero-image-ed hero-image-ed-xs"><div style="padding:40px;text-align:right;"><!--img width="140" src="<?php echo $homeURL;?>/images/ellie-dixon-logo-sm.png"--></div></div>
+<!-- main page contents -->
 
+<?php if( false ) { ?>
 <!-- social links-->
 <!--
 <div>
     <ul class="nav navbar-nav">
-	<?php
 		function genmenuitem($title,$url,$page,$icon)
 		{
 			// build a menu bar link, including a font-awesome icon
@@ -74,33 +80,23 @@
 			echo '<span class="icon"><i class="icon fa '.$icon.'"></i></span>';
 			echo '<span>'.$title.'</span></a></li>';
 		}
-		genmenuitem("Facebook","https://www.facebook.com/elliedixonmusic/",$page,"fa-facebook");
-		genmenuitem("YouTube","https://www.youtube.com/c/EllieDixonMusic",$page,"fa-youtube");
-		genmenuitem("SoundCloud","https://soundcloud.com/elliedixonmusic",$page,"fa-soundcloud");
-		genmenuitem("Twitter","https://twitter.com/elliedmusic",$page,"fa-twitter");
-		genmenuitem("Spotify","https://play.spotify.com/artist/4mvJltDSlBawXCZhq6NAso",$page,"fa-spotify");
+		//genmenuitem("Facebook","https://www.facebook.com/elliedixonmusic/",$page,"fa-facebook");
+		//genmenuitem("YouTube","https://www.youtube.com/c/EllieDixonMusic",$page,"fa-youtube");
+		//genmenuitem("SoundCloud","https://soundcloud.com/elliedixonmusic",$page,"fa-soundcloud");
+		//genmenuitem("Twitter","https://twitter.com/elliedmusic",$page,"fa-twitter");
+		//genmenuitem("Spotify","https://play.spotify.com/artist/4mvJltDSlBawXCZhq6NAso",$page,"fa-spotify");
 	?>
 	</ul>
 </div>
--->
 
-<!-- Enable this to have a mid-level tabbed navigation bar
+Enable this to have a mid-level tabbed navigation bar 
 
-		<div class="container-fluid banner" style="position: relative;">
-			<ul class="nav nav-tabs banner">
-							<?php
-							menuitem("Home",$homeURL."/home",$page,"home");
-							menuitem("About",$homeURL."/about",$page,"info-circle");
-							menuitem("News",$homeURL."/news",$page,"newspaper-o");
-							menuitem("Videos",$homeURL."/videos",$page,"film");
-							menuitem("EP",$homeURL."/ep",$page,"music");
-							menuitem("Gallery",$homeURL."/gallery",$page,"image");
-							//menuitem("Press",$homeURL."/press",$page,"microphone");
-							//menuitem("Gigs",$homeURL."/gigs",$page,"thumbs-o-up");
-							if( isset($_SESSION['userAuth']) && $_SESSION['userAuth'] == "Full" ){
-									menuitem("Site",$homeURL."/site",$page,"wrench");
-							}
-							?>
-				</ul>
-			</div>
+<div class="container-fluid banner" style="position: relative;">
+	<ul class="nav nav-tabs banner">
+		<?php
+			//createMenu($homeURL, $page);
+		?>
+	</ul>
+</div>
 -->
+<?php } ?>

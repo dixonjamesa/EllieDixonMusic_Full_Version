@@ -1,0 +1,110 @@
+<?php
+	$res=$msdb_connection->query("SELECT userId, userFirst, userLast, userPass, userAuth, userEmail, reg_date FROM users WHERE userId='".$_SESSION['user']."'");
+	$row=$res->fetch_array();
+	if ( isset($_POST['btn-delete']) ) 
+	{
+		//echo '<p>Delete Account</p>';
+	}
+	else if(isset($_POST['btn-changepass']))
+	{
+		//echo '<p>Change Password</p>';
+	}
+	else if(isset($_POST['btn-changepassnow']))
+	{
+		$passo = trim($_POST['passo']);
+		$passo = strip_tags($passo);
+		$passo = htmlspecialchars($passo);
+		$passn = trim($_POST['passn']);
+		$passn = strip_tags($passn);
+		$passn = htmlspecialchars($passn);
+		$passc = trim($_POST['passc']);
+		$passc = strip_tags($passc);
+		$passc = htmlspecialchars($passc);
+		$pass = $row['userPass'];
+		$passhash = hash('sha256', $passo);
+		if( $passhash != $pass )
+		{
+			$passError = "Password incorrect";
+		}
+		else if( $passn != $passc )
+		{
+			$passError = "New passwords don't match, please try again";
+		}
+		else if(strlen($passn) < 11) 
+		{
+			$passError = "Password must have at least 11 characters.";
+		}
+		else
+		{
+			// change it on server:
+			$passhash = hash('sha256', $passn);
+			$query = "UPDATE users SET userPass='".$passhash."' WHERE userId='".$_SESSION['user']."'";
+			$res=$msdb_connection->query($query);
+			if($res == 1 )
+			{
+				$passError = "Password changed";
+			}
+			else
+			{
+				$passError = "An error occurred (".$res."). Please try later.";
+			}
+		}
+	}
+	else if(isset($_POST['btn-confirmdelete']))
+	{
+		//echo '<p>Delete Now</p>';
+		$query = "DELETE FROM users WHERE userId='".$_SESSION['user']."'";
+		$res = $msdb_connection->query($query);
+		session_logout();
+		echo '<h1><span class="icon"><i class="far fa-sad-cry"></i></span>:(</h1>';
+		echo "<h4>Your account has been deleted. You will be redirected shortly...</h4>";
+		echo "<script>setTimeout(function(){
+            window.location.href = \"friends\";
+         }, 3000)</script>";
+	}
+?>
+<div class="container-fluid">
+	<h1>Friend Details</h1>
+	<table class="table table-striped table-condensed">
+	<tbody>
+	<tr>
+	  <td>Name</td><td><?php echo $row['userFirst'].' '.$row['userLast'];?></td>
+	</tr>
+	<tr>
+	  <td>Email</td><td><?php echo $row['userEmail'];?></td>
+	</tr>
+	<tr>
+	  <td>Joined on</td><td><?php echo $row['reg_date'];?></td>
+	</tr>
+	<tr>
+	  <td>Auth</td><td><?php echo $row['userAuth'];?></td>
+	</tr>
+	</tbody>
+	</table>
+	<form method="post" action="account" autocomplete="off">
+		<?php if(isset($_POST['btn-changepass']) || isset($_POST['btn-changepassnow'])) { ?>
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+				<input type="password" name="passo" class="form-control" placeholder="Enter Current Password" maxlength="256" />
+				<input type="password" name="passn" class="form-control" placeholder="Enter New Password" maxlength="256" />
+				<input type="password" name="passc" class="form-control" placeholder="Confirm New Password" maxlength="256" />
+			</div>
+			<span class="text-danger"><?php echo $passError; ?></span>			
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-ellied" name="btn-changepassnow" style="width:45%;">Change Password</button>
+		</div>
+		<?php } else if(isset($_POST['btn-delete'])) { ?>
+		<div class="form-group">
+			<h4>We'll be sorry to see you go, <?php echo $_SESSION['userFirst']?>. Are you sure?</h4>
+			<button type="submit" class="btn btn-ellied" name="btn-confirmdelete" style="width:45%;">Really, yes delete my account</span>
+		</div>
+		<?php }else{ ?>
+		<div class="form-group">
+			<button type="submit" class="btn btn-ellied" name="btn-changepass" style="width:45%;">Change Password</button>
+			<button type="submit" class="btn btn-ellied" name="btn-delete" style="width:45%;">Delete Account</span>
+		</div>
+		<?php } ?>
+	</form>
+</div>

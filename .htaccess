@@ -5,8 +5,9 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 # force HTTPS
-#RewriteCond %{HTTPS} !on
-#RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,NE,L] 
+# (won't work on local test)
+RewriteCond %{HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,NE,L] 
 
 #Make sure directory doesn't already exist:
 #RewriteCond %{REQUEST_FILENAME} !-d
@@ -30,5 +31,5 @@ RewriteRule (.*\.js) $1 [L]
 RewriteRule (.*\.m4a) $1 [L]
 
 #Remap URL to index.php with requested URL as parameter
-RewriteRule ^(.*)/(.*)$ index.php?page=$1&data=$2 [NC,L,QSA]
+RewriteRule ^([^/]*)/(.*)$ index.php?page=$1&data=$2 [NC,L,QSA]
 RewriteRule ^(.*)$ index.php?page=$1 [NC,L,QSA]

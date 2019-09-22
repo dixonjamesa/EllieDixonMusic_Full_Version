@@ -1,6 +1,6 @@
 /* to change colours, search for:
  * #058193 darkest accent used for links
- * # 
+ * #
  * #1996a9 darker accent colour including navbar icons
  * #bfeaf1 light accent colour, including main banner background and dividing lines
  * #d4eff3 lightest used for higlhights and body l/r borders
@@ -149,7 +149,7 @@ p > a:hover{
   -webkit-border: 0 !important;
   -moz-border: 0 !important;
   border: 0 !important ;
-  color:#ffffff;
+  color:whitesmoke;
   padding: 8px 10px 2px 10px;
   }
   
@@ -166,6 +166,7 @@ p > a:hover{
 {
 /* themecolour 2: */
   color:#1996a9;
+  background-color:whitesmoke;
   padding: 8px 10px 4px 10px;
 }
 .banner > li.active > a:hover {
@@ -208,7 +209,7 @@ p > a:hover{
 .hero-image-ed-xs
 {
 	background-image: url('../images/heroimage4.jpg');
-	background-position: -450px 50px;
+	background-position: -600px 54px;
 }
 
 /* used to have a scrolling transparent window with fixed image "behind" */
@@ -240,21 +241,31 @@ p > a:hover{
   -webkit-border: 0 !important;
   -moz-border: 0 !important;
   border: 0 !important ;
-  color: rgb(46,36,49);
-  padding: 8px 10px 4px 10px;
+  color: #058193;
+  background-color:#bfeaf1;
+  padding: 8px 10px 2px 10px;
   }
 .esitemenu > li > a:hover {
     background-color:#1996a9;
+	color:#d4eff3;
     padding: 8px 10px 2px 10px;
 }
 .esitemenu > li.active > a {
-  color:white;
-  background-color:#1996a9;
-  padding: 8px 10px 4px 10px;
+    background-color:#1996a9;
+	color:#d4eff3;
+	padding: 8px 10px 2px 10px;
+}
+.esitemenu > li.dropdown > a {
+  padding: 8px 10px 2px 10px;
+}
+.esitemenu > li.dropdown.active > a {
+    background-color:#1996a9;	
+	padding: 8px 10px 2px 10px;
 }
 .esitemenu > li.active > a:hover {
-  color:#1996a9;
-  padding: 8px 10px 4px 10px;
+    background-color:#1996a9;
+	color:whitesmoke;
+	padding: 8px 10px 2px 10px;
 }
 
 .news {
@@ -311,7 +322,14 @@ p > a:hover{
     border-color:#058193;
     color:white;
 }
-.btn-ellied:hover, .btn-ellied:active, .btn-ellied:visited {
+.btn-elliedlight {
+	/* themecolour 2,4*/
+    background:whitesmoke;
+    border-color:#058193;
+    color:#1996a9;
+}
+.btn-ellied:hover, .btn-ellied:active, .btn-ellied:visited,
+.btn-elliedlight:hover, .btn-elliedlight:active, .btn-elliedlight:visited {
 	/* themecolour 4 */
   background:#058193;
   color:white;

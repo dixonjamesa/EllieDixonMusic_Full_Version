@@ -4,134 +4,103 @@ $email = '';
 $pass = '';
 $emailError = '';
 $passError = '';
-if( $sessiontimeout ) $errMSG = "Your session has timed out.";
-
+if( $sessiontimedout ) $errMSG = "Your session has timed out.";
 
 if( isset($_POST['btn-login']) )
 {
-  // prevent sql injections/ clear user invalid inputs
-  $email = trim($_POST['email']);
-  $email = strip_tags($email);
-  $email = htmlspecialchars($email);
+	// prevent sql injections/ clear user invalid inputs
+	$email = trim($_POST['email']);
+	$email = strip_tags($email);
+	$email = htmlspecialchars($email);
+	$pass = trim($_POST['pass']);
+	$pass = strip_tags($pass);
+	$pass = htmlspecialchars($pass);
+  
+	// check if the email address looks valid:
+	if(empty($email))
+	{
+		$error = true;
+		$emailError = "Please enter your email address.";
+	} 
+	else if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) 
+	{
+		$error = true;
+		$emailError = "Please enter valid email address.";
+	}
 
-  $pass = trim($_POST['pass']);
-  $pass = strip_tags($pass);
-  $pass = htmlspecialchars($pass);
-  // prevent sql injections / clear user invalid inputs
-  if(empty($email)){
-    $error = true;
-    $emailError = "Please enter your email address.";
-  } else if ( !filter_var($email,FILTER_VALIDATE_EMAIL) ) {
-    $error = true;
-    $emailError = "Please enter valid email address.";
-  }
-
-  if(empty($pass)){
-    $error = true;
-    $passError = "Please enter your password.";
-  }
+	// check the password is present:
+	if(empty($pass))
+	{
+		$error = true;
+		$passError = "Please enter your password.";
+	}
 
     // if there's no error, try to login
-  if (!$error)
-  {
-    $password = hash('sha256', $pass); // password hashing using SHA256
-
-    $res=$msdb_connection->query("SELECT userId, userFirst, userLast, userPass, userAuth FROM users WHERE userEmail='$email'");
-    $row=$res->fetch_array();
-    $count = $res->num_rows; // if uname/pass correct it returns must be 1 row
-
-    if( $count == 1 && $row['userPass']==$password )
-    {
-      $_SESSION['user'] = $row['userId'];
-      $_SESSION['userAuth'] = $row['userAuth'];
-      $_SESSION['userFirst'] = $row['userFirst'];
-      $_SESSION['userLast'] = $row['userLast'];
-      /* ALL OK ... header("Location: home.php");*/
-      //echo 'ALL OK, User is '.$_SESSION['user'];
-      echo "<p>Welcome, ".$row['userFirst']."</p>";
-
-      $res->close();
-      if ( strcasecmp($page,"login")!=0 )
-      {
-        echo "<script>window.location.href = \"".$page."\";</script>";
-        //echo "redirect to ".$page;
-      }
-      else {
-        echo "<script>window.location.href = \"Home\";</script>";
-        //echo "Redirect to Home";
-      }
-      return;
-    } else {
-      $res->close();
-      $errMSG = "Incorrect Credentials, Try again...";
-    }
-  }
+	if (!$error)
+	{
+		if( session_login($email, $pass) )
+		{
+			echo "<p>Welcome, ".$_SESSION['userFirst']."</p>";
+			// redirect to the requested page now:
+			if ( strcasecmp($page,"login")!=0 )
+			{
+				echo "<script>window.location.href = \"".$page."\";</script>";
+				//echo "redirect to ".$page;
+			}
+			else 
+			{
+				echo "<script>window.location.href = \"Home\";</script>";
+				//echo "Redirect to Home";
+			}
+			return;
+		}
+		else
+		{
+			$errMSG = "Incorrect Credentials, Try again...";
+		}
+	}
 }
 ?>
 
-    <div class="container">
-    <?php if( isset($_SESSION['user']) ) { ?>
-    <p>You are logged in as
-        <?php echo $_SESSION['userFirst']." ".$_SESSION['userLast']." (Auth level ".$_SESSION['userAuth'].")"; ?>
-    </p>
-    <?php } ?>
+<div class="container-fluid">
+	<h2 class="">Sign in...</h2>
+	<h4 style="padding-left:100px;">...to receive extra goodies like song lyrics, merch offers and more</h4>
+	<hr />
+</div>
 
-     <div id="login-form">
-        <form method="post" action="<?php echo $page; ?>" autocomplete="off">
+<div class="container-fluid">
+	<div id="login-form" style = "width:70%;margin:0 auto;">
+		<form method="post" action="<?php echo $page; ?>" autocomplete="off">
+		
+	<?php   if ( isset($errMSG) ) {  ?>
+			<div class="form-group">
+				<div class="alert alert-danger">
+					<span class="glyphicon glyphicon-info-sign"></span> <?php echo $errMSG; ?>
+				</div>
+			</div>
+	<?php   } ?>
 
-         <div class="col-md-12">
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+					<input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
+				</div>
+				<span class="text-danger"><?php echo $emailError; ?></span>
+			</div>
 
-             <div class="form-group">
-                 <h2 class="">Sign in...</h2>
-                </div>
+			<div class="form-group">
+				<div class="input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+					<input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
+				</div>
+				<span class="text-danger"><?php echo $passError; ?></span>
+			</div>
 
-             <div class="form-group">
-                 <hr />
-                </div>
+			<div class="form-group">
+					<button type="submit" class="btn btn-ellied" name="btn-login" style="width:45%;">Sign In</button>
+					<span onclick="location.href='register';" class="btn btn-elliedlight" style="width:45%;float:right;">Register...</span>
+			</div>
 
-<?php   if ( isset($errMSG) ) {  ?>
-        <div class="form-group">
-                 <div class="alert alert-danger">
-        <span class="glyphicon glyphicon-info-sign"></span> <?php echo $errMSG; ?>
-                    </div>
-                 </div>
-<?php   } ?>
-
-                <div class="form-group">
-                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                 <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
-                    </div>
-                    <span class="text-danger"><?php echo $emailError; ?></span>
-                </div>
-
-                <div class="form-group">
-                 <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                 <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
-                    </div>
-                    <span class="text-danger"><?php echo $passError; ?></span>
-                </div>
-
-                <div class="form-group">
-                 <hr />
-                </div>
-
-                <div class="form-group">
-                 <button type="submit" class="btn btn-block btn-ellied" name="btn-login">Sign In</button>
-                </div>
-
-                <div class="form-group">
-                 <hr />
-                </div>
-
-                <div class="form-group">
-                 <a href="Register">Sign Up Here...</a>
-               </div>
-
-            </div>
-
-        </form>
-        </div>
-
-    </div>
+		</form>
+	</div>
+</div>

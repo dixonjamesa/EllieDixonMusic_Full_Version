@@ -1,0 +1,22 @@
+<?php
+	session_logout();
+?>
+
+<div class="container-fluid">
+    <?php 
+	if( !isset($_SESSION['user']) ) 
+	{ 
+		echo "
+		<h2>Logout</h2>
+		<p>You have been successfully logged out, and will be redirected shortly...</p><hr/>";
+    } 
+	else
+	{
+		echo "<p>The server has encountered a problem.</p>";
+	}
+	echo "<script>setTimeout(function(){
+            window.location.href = \"friends\";
+         }, 3000)</script>";
+	?>
+
+</div>

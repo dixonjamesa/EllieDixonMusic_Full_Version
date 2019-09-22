@@ -2,9 +2,10 @@
 //configed.php
 // contains configuration settings
 
-$loginfree = array("Home","News","Videos","EP","Gallery","Press","Gigs","Register");
-$loginrequired = array("Site");
-$sessionTimeout = 60*60*24;
+// Global state variables:
+$loginrequired = array("Friends");
+$sessionTimeout = 60*60*2;
+$sessiontimedout=False;
 
 if( $ipaddr == '::1' ) {
 // macbook local hosting
@@ -108,3 +109,4 @@ function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
 
   return $msdb_conn;
 }
+?>
