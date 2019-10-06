@@ -6,8 +6,9 @@
 $loginrequired = array("Friends");
 $sessionTimeout = 60*60*2;
 $sessiontimedout=False;
+$serverError="";
 
-if( $ipaddr == '::1' ) {
+if( $_SERVER['SERVER_NAME'] === "localhost" || $_SERVER['SERVER_NAME'] === "edm.local" || substr($_SERVER['SERVER_NAME'],0,9) == "192.168.0" ) {
 // macbook local hosting
 //  $servername="localhost:8889";
 //  $sqluser="root";
@@ -18,7 +19,7 @@ if( $ipaddr == '::1' ) {
   $sqluser="root";
   $sqlpass="";
   $sqldb="eddb1";
-  $homeURL="/EllieDixonMusic";
+  $homeURL="";///EllieDixonMusic";
 }
 else {
 // live server environment
@@ -31,13 +32,15 @@ else {
 
 function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
 {
+	global $serverError;
   // Create connection
   $msdb_conn = new mysqli($servername, $sqluser, $sqlpass);
   // Check connection
   if ($msdb_conn->connect_error) {
     //echo 'Connect failed.';
     write_logfile("Connection to server ".$servername." failed: " . $msdb_conn->connect_error);
-    return;
+	$serverError="Connection to server ".$servername." failed: " . $msdb_conn->connect_error;
+    return false;
   }
 
   // Create database if it's not already there
@@ -46,13 +49,13 @@ function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
       //echo "Database created/connected successfully. ";
   } else {
       write_logfile("Error creating database: " . $msdb_conn->error);
-      return;
+      return false;
   }
   // use this database now...
   $dbcon = $msdb_conn->select_db($sqldb);
   if (!$dbcon ){
     write_logfile("Could not connect to database");
-    return;
+    return false;
   }
 
   // Create table of users if it's not already there...
@@ -71,7 +74,7 @@ function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
       //echo "Table of users is OK";
   } else {
       write_logfile( "Error at user table: " . $msdb_conn->error);
-      return;
+      return false;
   }
 
   // Create table for IP visitors if it's not already there...
@@ -90,7 +93,7 @@ function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
       //echo "Table of visitors is OK";
   } else {
       write_logfile( "Error at visitor table: " . $msdb_conn->error);
-      return;
+      return false;
   }
   // Create table for page hits if it's not already there...
   $sql = "CREATE TABLE IF NOT EXISTS pagehits (
@@ -104,7 +107,7 @@ function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
       //echo "Table of pagehits is OK";
   } else {
       write_logfile( "Error at pagehits table: " . $msdb_conn->error);
-      return;
+      return false;
   }
 
   return $msdb_conn;

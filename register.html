@@ -61,7 +61,7 @@
 
   // password encrypt using SHA256();
   $password = hash('sha256', $pass);
-  $rdate = date('m/d/Y h:i:s a', time());
+  $rdate = date('Y-m-d H:i:s', time());
 
   // if there's no error, continue to signup
   if( !$error ) {

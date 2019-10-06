@@ -32,7 +32,7 @@
 	$msdb_connection = init_dataconnection($servername, $sqldb, $sqluser, $sqlpass);
 
 	// get name of requested page, which was passed as the 'page' parameter:
-	if( isset($_GET['page'])){
+	if( isset($_GET['page']) && $_GET['page'] != ""){
 		$page = strtolower($_GET['page']);
 	}else{
 		// send them to the home page:
@@ -45,6 +45,10 @@
 	include 'commonbody.html';
 	// Put the banner at the top of the page
 	include 'banner.html';
+	if( $msdb_connection == false )
+	{
+		include 'servererror.html';
+	}
 
 	// Now decide exactly what page contents to show...
 	// If the page exists, and no login is required for it, then proceed to show it
@@ -60,8 +64,15 @@
 		}
 		else
 		{ // page doesn't exist, so tell the visitor
-			//echo '<p>Page: '.$page.'</p>';
-			//echo '<p>Page: '.$_GET['data'].'</p>';
+			/*
+			echo '<p>Page: "'.$page.'"</p>';
+			if( isset($_GET['data']) )
+			{
+				echo '<p>Data: '.$_GET['data'].'</p>';
+			}
+			else{
+				echo'no data field';
+			}*/
 			include 'pagemissing.html';
 		}
 	}
