@@ -9,14 +9,14 @@ function session_loginproceed($msdb_conn, $page)
 	// look to see if the page requires a login, as defined by $loginrequired in configed.php:
 	$arrlength = count($loginrequired);
 
-	for($x = 0; $x < $arrlength; $x++) 
+	for($x = 0; $x < $arrlength; $x++)
 	{
-		if(strcasecmp($page,$loginrequired[$x])==0) 
+		if(strcasecmp($page,$loginrequired[$x])==0)
 		{
 			$requirelogin = true;
 		}
 	}
-	if( !$requirelogin ) 
+	if( !$requirelogin )
 	{
 		return true;
 	}
@@ -48,7 +48,7 @@ function session_login($email, $pass)
 
 	$res=$msdb_connection->query("SELECT userId, userFirst, userLast, userPass, userAuth FROM users WHERE userEmail='$email'");
 	$row=$res->fetch_array();
-	$count = $res->num_rows; 
+	$count = $res->num_rows;
 	$res->close();
 	// if uname/pass correct it should return just the 1 row
 	if( $count == 1 && $row['userPass']==$passhash )
@@ -59,7 +59,7 @@ function session_login($email, $pass)
 		$_SESSION['userLast'] = $row['userLast'];
 		$_SESSION['userRegDate'] = $row['reg_date'];
 		return true;
-	} 
+	}
 	return false;
 }
 
@@ -75,6 +75,18 @@ function session_loginisadmin()
 function session_logout()
 {
     session_unset();     // unset $_SESSION variable for the run-time
-    session_destroy();   // destroy session data in storage	
+    session_destroy();   // destroy session data in storage
+}
+
+function password_reset($email)
+{
+	// test this is a known user first:
+
+	// set up a new password
+
+	// email it to the address
+
+	// reset sent
+	return true;
 }
 ?>

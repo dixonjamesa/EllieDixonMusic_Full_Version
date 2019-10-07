@@ -6,15 +6,11 @@ $emailError = '';
 $passError = '';
 if( $sessiontimedout ) $errMSG = "Your session has timed out.";
 
-if( isset($_POST['btn-login']) )
+if( isset($_POST['btn-reset']) )
 {
 	// prevent sql injections/ clear user invalid inputs
 	$email = trim($_POST['email']);
-	$email = strip_tags($email);
-	$email = htmlspecialchars($email);
-	$pass = trim($_POST['pass']);
-	$pass = strip_tags($pass);
-	$pass = htmlspecialchars($pass);
+	$email = htmlspecialchars(strip_tags($email));
 
 	// check if the email address looks valid:
 	if(empty($email))
@@ -28,43 +24,25 @@ if( isset($_POST['btn-login']) )
 		$emailError = "Please enter valid email address.";
 	}
 
-	// check the password is present:
-	if(empty($pass))
-	{
-		$error = true;
-		$passError = "Please enter your password.";
-	}
-
-    // if there's no error, try to login
+	// if there's no error, send a password reset
 	if (!$error)
 	{
-		if( session_login($email, $pass) )
+		if( password_reset($email) )
 		{
-			echo "<p>Welcome, ".$_SESSION['userFirst']."</p>";
+			echo "<p>A reset email has been sent to  ".$email."</p>";
 			// redirect to the requested page now:
-			if ( strcasecmp($page,"login")!=0 )
-			{
-				echo "<script>window.location.href = \"".$page."\";</script>";
-				//echo "redirect to ".$page;
-			}
-			else
-			{
-				echo "<script>window.location.href = \"Home\";</script>";
-				//echo "Redirect to Home";
-			}
 			return;
 		}
 		else
 		{
-			$errMSG = "Incorrect Credentials, Try again...";
+			$errMSG = "Unrecognised credentials, try again...";
 		}
 	}
 }
 ?>
 
 <div class="container-fluid">
-	<h2 class="">Sign in...</h2>
-	<h4 style="padding-left:100px;">...to receive extra goodies like song lyrics, merch offers and more</h4>
+	<h2 class="">Reset password...</h2>
 	<hr />
 </div>
 
@@ -95,10 +73,10 @@ if( isset($_POST['btn-login']) )
 				</div>
 				<span class="text-danger"><?php echo $passError; ?></span>
 			</div>
-			<div><p><a href="forgotpass.html">Forgot password...</a><p></div>
+
 			<div class="form-group">
-					<button type="submit" class="btn btn-ellied" name="btn-login" style="width:45%;">Sign In</button>
-					<span onclick="location.href='register';" class="btn btn-elliedlight" style="width:45%;float:right;">Register...</span>
+					<button type="submit" class="btn btn-ellied" name="btn-reset" style="width:45%;">Reset</button>
+					<span onclick="location.href='login';" class="btn btn-elliedlight" style="width:45%;float:right;">Back...</span>
 			</div>
 
 		</form>
