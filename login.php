@@ -95,6 +95,7 @@ function password_reset($email)
 			$n = rand(0, $alen);
 			$newpass[$i] = $alphabet[$n];
 	}
+	$newpass = implode($newpass); // convert from array to string
 	// change the password
 	$passhash = hash('sha256', $newpass);
 	$res=$msdb_connection->query("UPDATE users SET userPass='".$passhash."' WHERE userId='". $row['userId']."'");
