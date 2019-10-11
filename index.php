@@ -17,7 +17,7 @@
 
 	//set error handler
 	set_error_handler("customError");
-	
+
 	/* see if we support mod_rewrite:
 	$mods = apache_get_modules();
 	if (in_array('mod_rewrite', $mods)) {
@@ -25,8 +25,8 @@
 	}
 	else {
 		echo "Apache is not loading mod_rewrite.";
-	}
-	*/
+	}*/
+
 
 	// database connection:
 	$msdb_connection = init_dataconnection($servername, $sqldb, $sqluser, $sqlpass);
@@ -38,7 +38,7 @@
 		// send them to the home page:
 		$page='home';
 	}
-	
+
 	/* Output the head tags and common head html */
 	include 'head.html';
 	/* Now we'll do the body tag and some common stuff... */
@@ -49,13 +49,15 @@
 	{
 		include 'servererror.html';
 	}
+	// debugging: cwd, current user, attempt to log something
+	//echo "<p>".getcwd().":".posix_getpwuid(posix_geteuid())['name'].":".write_logfile("All good in the hood")."</p>";
 
 	// Now decide exactly what page contents to show...
 	// If the page exists, and no login is required for it, then proceed to show it
 	// if it doesn't exist, show the page missing text
 	// if login is required, force the login page
 	if(session_loginproceed($msdb_connection, $page))
-	{ //It's OK to include the actual contents then... 
+	{ //It's OK to include the actual contents then...
 		//write_logfile("Visitor ".$ipaddr." to page: ".$page);
 		//sendtomirror($ipaddr, $page);
 		if (file_exists ( $page.'.html' ) )
@@ -76,7 +78,7 @@
 			include 'pagemissing.html';
 		}
 	}
-	else 
+	else
 	{ // not logged in, but needs to be...
 		include 'login.html';
 	}
@@ -88,5 +90,5 @@
 	//visitor_logvisit($ipaddr, $date, $page."/".$_GET['data']);
 
 	$msdb_connection->close();
-	ob_end_flush(); 
+	ob_end_flush();
 ?>

@@ -15,7 +15,8 @@ if( $_SERVER['SERVER_NAME'] === "localhost" || $_SERVER['SERVER_NAME'] === "edm.
 //  $sqlpass="root";
 
 // PC local hosting with WAMP
-  $servername="localhost:3306";
+  $servername="localhost";
+  //$servername="localhost:3306";
   $sqluser="root";
   $sqlpass="";
   $sqldb="eddb1";
@@ -109,7 +110,6 @@ function init_dataconnection($servername, $sqldb, $sqluser, $sqlpass)
       write_logfile( "Error at pagehits table: " . $msdb_conn->error);
       return false;
   }
-
   return $msdb_conn;
 }
 ?>

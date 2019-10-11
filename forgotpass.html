@@ -1,9 +1,7 @@
 <?php
 $error = false;
 $email = '';
-$pass = '';
 $emailError = '';
-$passError = '';
 if( $sessiontimedout ) $errMSG = "Your session has timed out.";
 
 if( isset($_POST['btn-reset']) )
@@ -35,6 +33,8 @@ if( isset($_POST['btn-reset']) )
 		}
 		else
 		{
+			$error = true;
+			$emailError = "Please enter valid email address.";
 			$errMSG = "Unrecognised credentials, try again...";
 		}
 	}
@@ -64,14 +64,6 @@ if( isset($_POST['btn-reset']) )
 					<input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
 				</div>
 				<span class="text-danger"><?php echo $emailError; ?></span>
-			</div>
-
-			<div class="form-group">
-				<div class="input-group">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-					<input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
-				</div>
-				<span class="text-danger"><?php echo $passError; ?></span>
 			</div>
 
 			<div class="form-group">

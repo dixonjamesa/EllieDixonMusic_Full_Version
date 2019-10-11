@@ -1,7 +1,7 @@
 <?php
 
 /* Get the IP address of the client PC that is connecting */
-function get_ip_address() 
+function get_ip_address()
 {
     $ip_keys = array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR');
     foreach ($ip_keys as $key) {
@@ -34,9 +34,10 @@ function validate_ip($ip)
 function write_logfile($what)
 {
 	global $date;
-	
+
 	$out = $date.":  ".$what;
-	$logfile = file_put_contents('log.txt', $out.PHP_EOL, FILE_APPEND | LOCK_EX );
+	$out = $out."(".file_put_contents('./log.txt', $out.PHP_EOL, FILE_APPEND | LOCK_EX ).")";
+  return $out;
 }
 
 //error handler function

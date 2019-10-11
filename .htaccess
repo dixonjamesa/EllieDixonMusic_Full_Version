@@ -7,7 +7,7 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 # force HTTPS
 # (won't work on local test)
 RewriteCond %{HTTPS} !on
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,NE,L] 
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,NE,L]
 
 #Make sure directory doesn't already exist:
 #RewriteCond %{REQUEST_FILENAME} !-d

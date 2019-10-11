@@ -81,12 +81,34 @@ function session_logout()
 function password_reset($email)
 {
 	// test this is a known user first:
-
+	global $msdb_connection;
+	$res=$msdb_connection->query("SELECT userId FROM users WHERE userEmail='$email'");
+	$row=$res->fetch_array();
+	$count = $res->num_rows;
+	$res->close();
+	if( $count != 1 ) return false;
 	// set up a new password
-
-	// email it to the address
-
-	// reset sent
-	return true;
+	$alphabet = "abcdefghijklmnopqrstuwxyz0123456789ABCDEFGHIJKLMNOPQRSTUWXYZ0123456789 _£!$%*()<>";
+	$newpass = array();
+	$alen = strlen($alphabet)-1;
+	for ($i = 0; $i < 15; $i++) {
+			$n = rand(0, $alen);
+			$newpass[$i] = $alphabet[$n];
+	}
+	// change the password
+	$passhash = hash('sha256', $newpass);
+	$res=$msdb_connection->query("UPDATE users SET userPass='".$passhash."' WHERE userId='". $row['userId']."'");
+	if($res == 1 )
+	{
+		// email it to the address
+		$message = "You new password is ".$newpass;
+		$headers = "MIME-Version: 1.0"."\r\n";
+		$headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
+		$headers .= "From: admin@elliedixonmusic.com"."\r\n";
+		mail($email, "Account password change request", $message, $headers );
+		// reset sent
+		return true;
+	}
+	return false;
 }
 ?>
