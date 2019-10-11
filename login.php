@@ -101,13 +101,19 @@ function password_reset($email)
 	if($res == 1 )
 	{
 		// email it to the address
-		$message = "You new password is ".$newpass;
-		$headers = "MIME-Version: 1.0"."\r\n";
-		$headers .= "Content-type:text/html;charset=UTF-8"."\r\n";
-		$headers .= "From: admin@elliedixonmusic.com"."\r\n";
-		mail($email, "Account password change request", $message, $headers );
-		// reset sent
-		return true;
+		$message = "Your new password is ".$newpass;
+		$headers = "MIME-Version: 1.0\r\n";
+		$headers .= "Content-type:text/html;charset=UTF-8\r\n";
+		$headers .= "From: admin@elliedixonmusic.com <admin@elliedixonmusic.com>\r\n";
+		$headers .= "Reply-To: admin@elliedixonmusic.com <admin@elliedixonmusic.com>\r\n";
+		$headers .= "Return-Path: admin@elliedixonmusic.com <admin@elliedixonmusic.com>\r\n";
+		$headers .= "X-Priority: 3\r\n";
+		$headers .= "X-MSMail-Priority: Normal\r\n";
+		if (mail($email, "Account password change request", $message, $headers ) )
+		{
+			// reset sent
+			return true;
+		}
 	}
 	return false;
 }
