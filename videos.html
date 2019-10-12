@@ -35,6 +35,7 @@ add_video("U3WhbHV2MN4", "soulsister.jpg", "Hey Soul Sister", "Train", "SoulSist
 add_video("N3iMS-X8Xx4", "holdback.jpg", "Hold Back the River", "James Bay", "HoldBack");
 add_video("ssdyPMlcWVg", "breezeblocks.jpg", "Breezeblocks", "Alt-J", "Breeze");
 /* Covers */
+add_video("z9TsdQxd9_Q", "senorita.jpg", "Senorita", "Shawn Mendes", "Senorita");
 add_video("XoG6vvGqwNg", "dancetothis.jpg", "Dance To This", "Troye Sivan & Ariana Grande", "DanceToThis");
 add_video("Aicmc1Dmt8c", "palosanto.jpg", "Palo Santo", "Years & Years", "PaloSanto");
 add_video("2H35opvuako", "toxichabits.jpg", "Toxic vs Habits", "Britney Spears / Tove Lo", "ToxicHabits");
@@ -178,19 +179,19 @@ $videonumber = -1;
 
     // This function creates an <iframe> (and YouTube player)
     // after the API code downloads.
-	
+
     var player;
-	
+
 	function changevideo(newvid)
 	{
 		player.loadVideoById(newvid);
 	}
-	function onYouTubeIframeAPIReady() 
+	function onYouTubeIframeAPIReady()
 	{
 		player = new YT.Player(
-			'ytplayer', 
+			'ytplayer',
 			{height: '100%', width: '100%', videoId: '<?php echo $videolist[0]?>',
-				playerVars: { 
+				playerVars: {
 					autoplay: 1,
                     loop: 0,
                     controls: 0,
@@ -210,7 +211,7 @@ $videonumber = -1;
 	var playingVid = -1;
 // state change callbacks - one for each video:
 	function onPlayerStateChange(event)
-	{ 
+	{
 		onStateChangeGeneric(event,'<?php echo $videotags[0]?>', player );
 	}
 
