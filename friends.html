@@ -27,23 +27,23 @@
     </ul>
 
 </div>
-<!--div class="container-fluid">
-	<p>You are logged in as
-		<?php
-			if( isset($_SESSION['user']) ) {
-			  echo $_SESSION['userFirst']." ".$_SESSION['userLast']." (Auth level ".$_SESSION['userAuth'].").";
-			}
-			else{
-			  echo " Anonymous";
-			}
-		?>
-	</p>
-</div-->
+<div class="container-fluid">
+</div>
 <div class="container-fluid">
 	<?php
 		if ($subpage!=""){
 		  $sbhtml = "private/".strtolower($subpage).".html";
 		  include $sbhtml;
+		}
+		else{
+		echo "<p>Hi there, ";
+			if( isset($_SESSION['user']) ) {
+			  echo $_SESSION['userFirst']/*." ".$_SESSION['userLast']." (Auth level ".$_SESSION['userAuth'].")."*/;
+			}
+			else{
+			  echo " Anonymous";
+			}
+		echo". Please choose a tab above.</p>";
 		}
 	?>
 </div>
