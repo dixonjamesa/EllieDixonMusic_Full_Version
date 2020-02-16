@@ -2,7 +2,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 if (php_sapi_name() != 'cli') {
-    throw new Exception('This application must be run on the command line.');
+  //  throw new Exception('This application must be run on the command line.');
 }
 
 /**
@@ -14,7 +14,7 @@ function getClient()
     $client = new Google_Client();
     $client->setApplicationName('Google Calendar API PHP Quickstart');
     $client->setScopes(Google_Service_Calendar::CALENDAR_READONLY);
-    $client->setAuthConfig('credentials.json');
+    $client->setAuthConfig('api/edmcredentials.json');
     $client->setAccessType('offline');
     $client->setPrompt('select_account consent');
 
@@ -36,9 +36,8 @@ function getClient()
         } else {
             // Request authorization from the user.
             $authUrl = $client->createAuthUrl();
-            printf("Open the following link in your browser:\n%s\n", $authUrl);
-            print 'Enter verification code: ';
-            $authCode = trim(fgets(STDIN));
+            printf("Open the following link in your browser: <a href=\"%s\">authorise</a>", $authUrl);
+            $authCode = 'PASTECODEHERE';
 
             // Exchange authorization code for an access token.
             $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
