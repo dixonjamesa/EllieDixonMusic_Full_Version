@@ -6,5 +6,6 @@ cp $DEST -r /var/www/edmold
 rm -rf $DEST
 mkdir $DEST
 cp $SOURCE/. -r $DEST
+chown www-data:www-data $DEST
 rm $DEST/deploy*
 rm -rf $DEST/sourcefiles
