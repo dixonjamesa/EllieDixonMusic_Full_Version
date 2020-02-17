@@ -40,7 +40,8 @@
 			if (empty($start)) {
 				$start = $event->start->date;
 			}
-			printf("<tr><td class=\"gigdate\">%s<br>%s</td>", $start, $start);
+			$date = new DateTime($start);
+			printf("<tr><td class=\"gigdate\">%s<br>%s</td>", strtoupper($date->format('M')), $date->format('jS'));
 			printf("<td class=\"giginfo\">%s<br><div class=\"giginfosub\">%s</div></td></tr>", $event->getSummary(), $event->getDescription());
 		}
 	}
