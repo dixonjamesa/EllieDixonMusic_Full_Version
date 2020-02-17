@@ -1,35 +1,49 @@
-<p>Gig Calendar</p>
-<p>
-<?php
-	require_once 'quickstart.php';
-	
-	// Get the API client and construct the service object.
-$client = getClient();
-$service = new Google_Service_Calendar($client);
 
-// Print the next 10 events on the user's calendar.
-//$calendarId = 'primary';
-$calendarId = 'jcrpvclb7tmu4umf0vmuus6ga0@group.calendar.google.com';
-$optParams = array(
-  'maxResults' => 10,
-  'orderBy' => 'startTime',
-  'singleEvents' => true,
-  'timeMin' => date('c'),
-);
-$results = $service->events->listEvents($calendarId, $optParams);
-$events = $results->getItems();
+<div class="container-fluid" style="padding:10px;margin-bottom:min(10vw,120px);">
+<p class="gigsubhead">Gig Guide</p>
+</div>
+<div class="container-fluid" style="padding:0px;margin:40px;margin-top:0;">
+	<p><img class="gighead" src="images/ellie-dixon-logo.png"></p>
+	<table class="gigtable">
+	<tr>
+		<td colspan="2"><p class="gigsubhead">UPCOMING SHOWS</p></td>
+	</tr>
+	<tr>
+	<td class="gigdate">FEB<br>22nd</td>
+	<td class="giginfo">EXAMPLE EVENT<br><div class="giginfosub">GIG LOCATION HERE</div></td>
+	</tr>
 
-if (empty($events)) {
-    print "No upcoming events found.<br>";
-} else {
-    print "Upcoming events:<br>";
-    foreach ($events as $event) {
-        $start = $event->start->dateTime;
-        if (empty($start)) {
-            $start = $event->start->date;
-        }
-        printf("%s (%s)<br>", $event->getSummary(), $start);
-    }
-}
-?>
-</p>	
+	<?php
+		require_once 'quickstart.php';
+		
+		// Get the API client and construct the service object.
+	$client = getClient();
+	$service = new Google_Service_Calendar($client);
+
+	// Print the next 10 events on the user's calendar.
+	//$calendarId = 'primary';
+	$calendarId = 'jcrpvclb7tmu4umf0vmuus6ga0@group.calendar.google.com';
+	$optParams = array(
+	  'maxResults' => 10,
+	  'orderBy' => 'startTime',
+	  'singleEvents' => true,
+	  'timeMin' => date('c'),
+	);
+	$results = $service->events->listEvents($calendarId, $optParams);
+	$events = $results->getItems();
+
+	if (empty($events)) {
+		//print "No upcoming events found.<br>";
+	} else {
+		foreach ($events as $event) {
+			$start = $event->start->dateTime;
+			if (empty($start)) {
+				$start = $event->start->date;
+			}
+			printf("<tr><td class=\"gigdate\">%s<br>%s</td>", $start, $start);
+			printf("<td class=\"giginfo\">%s<br><div class=\"giginfosub\">%s</div></td></tr>", $event->getSummary(), $event->getDescription());
+		}
+	}
+	?>
+	</table>	
+</div>

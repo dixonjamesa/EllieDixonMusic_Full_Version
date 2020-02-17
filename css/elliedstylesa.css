@@ -355,6 +355,60 @@ p > a:hover{
 	border-width:1px;
 }
 
+.gighead {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  margin-top:-10%;
+  margin-bottom:-3%;
+}
+.gigsubhead {
+	font-family: "Georgia", Georgia, serif;
+	border:0;
+	font-size:5vw;
+	font-size:min(5vw,60px);
+	color:#ff6622;
+	font-style:italic;
+	text-align:center;
+}
+
+.gigtable {
+	margin-top:-60px;
+	margin-left:auto; 
+    margin-right:auto;
+	border-collapse: separate;
+	border-spacing:30px;
+	border: 0px solid grey;
+}
+.gigdate {
+	font-family: "Georgia", Georgia, serif;
+	margin:20px;
+	background-color:#ff6622;
+	height:10vw;
+	height:min(10vw,100px);
+	width:10vw;
+	width:min(10vw,100px);
+	color:white;
+	font-size:3vw;
+	font-size:min(3vw,30px);
+	font-style:italic;
+	text-align:center;
+	vertical-align:middle;
+}
+.giginfo {
+	font-family: "Georgia", Georgia, serif;
+	font-size:4vw;
+	font-size:min(4vw,40px);
+	font-style:italic;
+	font-weight:bold;
+	color:#ff6622;
+}
+.giginfosub{
+	font-size:2.4vw;
+	font-size:min(2.4vw,24px);
+	font-weight:normal;
+}
 .footer {
   background-color: whitesmoke;
   padding: 40px 20px 80px;
