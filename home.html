@@ -2,89 +2,25 @@
 	<!-- here to help SEO -->
 	<h1 style="color:white;font-size:1px;padding:0;margin:0;">Ellie Dixon</h1>
 
-	<?php
-		//echo $_SERVER['SERVER_NAME'];
-		function commonout()
-		{
-			global $homeURL;
-			echo '<h1 style="text-align:center">Growing Pains EP out now</h1>';
-			echo '<p style="font-size:14pt;text-align:center;">My latest EP,<a href="'.$homeURL.'/ep" title="Ellie Dixon EP Growing Pains"> Growing Pains </a>is now available for download</p>';
-            echo '<table style="width:90%;margin-left:auto;margin-right:auto;"><tr><td><p style="font-size:16px;margin-bottom:4px;text-align:center;">Listen now...</p><div style="width:100%;text-align:center;"><iframe class="display:block;" src="https://embed.spotify.com/?uri=spotify:album:6jWZKvLyz0knGpjBuX0tTU&theme=white" width="240" height="250" frameborder="0" allowtransparency="true"></iframe></div> <!-- player widget -->';
-            echo '</td><td valign="top" style="padding:0px 10px;"><p style="font-size:16px;margin-bottom:4px;text-align:center;">Or find it on...</p>';
-            echo '<p style="margin-bottom:24px;text-align:center;">';
-                echo '<br><a onClick="ga(\'send\',\'event\',\'Store\',\'iTunes\',\'GrowingPains\');" href="https://itunes.apple.com/gb/album/growing-pains-ep/1436541677?mt=1&app=music"><img style="height:28px" src="'.$homeURL.'/images/badgeitunes.png"></a>';
-                echo '<br><br><a onClick="ga(\'send\',\'event\',\'Store\',\'Spotify\',\'GrowingPains\');" href="https://play.spotify.com/album/6jWZKvLyz0knGpjBuX0tTU"><img style="height:28px" src="'.$homeURL.'/images/badgespotify.png"></a>';
-                echo '<br><br><a onClick="ga(\'send\',\'event\',\'Store\',\'Google\',\'GrowingPains\');" href="https://play.google.com/store/music/album/Ellie_Dixon_Growing_Pains?id=Buz7ubclzlzqfxj3cq4w5fxg5c4&hl=en_GB"><img style="height:28px" src="'.$homeURL.'/images/badgegoogleplay.png"></a>';
-                echo '<br><br><a onClick="ga(\'send\',\'event\',\'Store\',\'Amazon\',\'GrowingPains\');" href="https://www.amazon.co.uk/Growing-Pains-Ellie-Dixon/dp/B07HFLQ32T"><img style="height:28px" src="'.$homeURL.'/images/badgeamazon.png"></a>';
-            echo '</p></td></tr></table>';
-			echo '<p style="font-size:14pt;margin-top:10px;text-align:center;">Or buy one of these gorgeous CDs!<br><a href="mailto:contact@elliedixonmusic.com"> Contact me </a>if you\'d like one for £10 plus P&amp;P</p>';
-			echo '<div style="text-align:center;"><img width="320" src="images/growingcds.jpg">';
-            echo '</div>';
-		}
-	?>
 	<div class="container-fluid" style="padding:16px 30px;">
 		<!-- single column (narrow) view -->
-		<div style="font-family:Georgia;color:#008591;">
-			<div class="video" style="width:95%;margin:0 auto;margin-bottom:25px;">
-				<div class="videoWrapper">
-					<div id="ytplayer">
-						<!-- script code inserts video here -->
-					</div>
+		<div class="video" style="width:95%;margin:0 auto;margin-bottom:25px;">
+			<div class="videoWrapper">
+				<div id="ytplayer">
+					<!-- script code inserts video here -->
 				</div>
 			</div>
-			<div class="col-sm-6 gridspace" style="text-align:center;">
-				<a href="<?php echo $homeURL;?>/images/pressurecover.jpg" title="ellie dixon pressure single">
-					<img style="width:95%;margin-bottom:20px;" src="<?php echo $homeURL;?>/images/pressurecover.jpg" alt="Ellie Dixon Pressure Single" title="Ellie Dixon Pressure Single">
-				</a>
-			</div>
-			<div class="col-sm-6 gridspace">
-				<h1 style="text-align:center;margin-top:0px;">New Single <strong>Pressure</strong> Out Now</h1>
-				<p style="font-size:14pt;text-align:center;margin-top:30px;">My brand new latin indie pop bop is out on <strong>all streaming platforms</strong>, go give it some love!</p>
-				<p style="margin-top:20px;margin-bottom:20px;text-align:center"><a onClick="ga(\'send\',\'event\',\'Store\',\'iTunes\',\'Pressure\');" href="https://music.apple.com/gb/album/pressure-single/1483589326?app=itunes&ign-mpt=uo%3D4"><img style="height:40px" src="/images/badgeitunes.png"></a>
-                <a onClick="ga(\'send\',\'event\',\'Store\',\'Spotify\',\'Pressure\');" href="https://open.spotify.com/track/0yROn53ZAgi3rgZ5U5lllJ"><img style="height:40px" src="/images/badgespotify.png"></a>
-                <a onClick="ga(\'send\',\'event\',\'Store\',\'Google\',\'Pressure\');" href="https://play.google.com/store/music/album/Ellie_Dixon_Pressure?id=Bxwlbiy5get4v67k6w7pqogom7a&fbclid=IwAR3uLIy2tZpEFkbKfNEKZLohXByCHDFSZTIcmlz9Iqol6ULE74MxlZ5Gysc"><img style="height:40px" src="/images/badgegoogleplay.png"></a>
-                <a onClick="ga(\'send\',\'event\',\'Store\',\'Amazon\',\'Pressure\');" href="https://www.amazon.com/Pressure-Ellie-Dixon/dp/B07Z599T58?tag=smarturl-pivot-20"><img style="height:40px" src="/images/badgeamazon.png"></a>
-				</p>
-
-				<p style="font-size:14pt;text-align:justify;">This song was self-produced from start to finish, from composition to mastering and I'm so proud of it. I performed all the vocals, guitars and bass and while driving me completely crazy listening to it a million times a day, it's still my baby. It's both a love and a hate song to the part of me that is always pushing me to do better and I hope you all take a bit of strength from it too. Failing that, I hope you can shake your hips to it like the boss bitches you are x
-				</p>				
-				<div style="width:100%;text-align:center;margin-top:30px;margin-bottom:30px;">
-					<iframe class="display:block;" src="https://embed.spotify.com/?uri=spotify:album:7nktlfTzDbvMdKvBt0SBAw&theme=white" width="340" height="80" frameborder="0" allowtransparency="true"></iframe>
-				</div>
-				
-			</div>
-
 		</div>
 	</div>
-		
 	<!-- spacer with "look-through" to fixed background image -->
-	<?php spacer(160,60,0,"images/pressurecover.jpg"); 
-	include "gigcal.html";
+	<?php spacer(160,60,0,"images/uglycover.jpg");
+	include "content/ugly.html";?>
+	<!-- spacer with "look-through" to fixed background image -->
+	<?php spacer(160,60,0,"images/uglycover.jpg");
+	//include "gigcal.html";
 	?>
-
-	<div class="container-fluid" style="padding:16px 30px;">
-		<div class="row visible-xs">
-			<div class="gridspace">
-				<?php commonout(); ?>
-			</div>
-		</div>
-		<!-- dual column (full) view -->
-		<div class="row hidden-xs" style="display:flex;">
-			<div class="col-sm-6 gridspace">
-				<a href="<?php echo $homeURL;?>/images/growingedit.jpg" title="ellie dixon growing pains EP">
-					<img style="width:80%;float:left;" src="<?php echo $homeURL;?>/images/growingedit.jpg" alt="ellie dixon growing pains EP" title="ellie dixon growing pains EP">
-				</a>
-				<img style="width:80%;float:left;padding-top:20px;" src="<?php echo $homeURL;?>/images/ellie_dixon_gig2.jpg" alt="ellie dixon performing" title="ellie dixon performing">
-				<!-- here to help SEO -->
-				<h2 style="font-weight:normal;font-size:1px;margin:0;">
-					<a style="color:white;" href="<?php echo $homeURL;?>/gallery" title="Ellie Dixon Growing Pains EP">Ellie Dixon Growing Pains EP</a>
-				</h2>
-			</div>
-			<div class="col-sm-6 gridspace hidden-xs"  style="">
-				<?php commonout(); ?>
-			</div>
-		</div>
-	</div>
+	<?php spacer(160,60,0,"images/pressurecover.jpg");
+	include "content/pressure.html";?>
 
 	<!-- spacer with "look-through" to fixed background image -->
 	<?php spacer(160,60,0,"images/growingpains.jpg"); ?>
